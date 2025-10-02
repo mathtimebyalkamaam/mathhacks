@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Time - Unlock the Secrets of Mathematics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8; /* Light blue-gray background */
+        }
+
+        .hero-bg {
+            background-color: #1a202c;
+            background-image:
+                radial-gradient(at 47% 33%, hsl(200.00, 0%, 100%) 0, transparent 59%),
+                radial-gradient(at 82% 65%, hsl(218.00, 39%, 25%) 0, transparent 55%);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-hover-effect {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Animation for elements on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 shadow-sm transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="index.html" class="text-3xl font-bold text-gray-900 flex items-center">
+                <span class="text-indigo-600">Math</span>Time<span class="text-indigo-400">.</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="index.html#hacks" class="text-gray-600 hover:text-indigo-600 transition-colors">Hacks</a>
+                <a href="index.html#blogs" class="text-gray-600 hover:text-indigo-600 transition-colors">Blogs</a>
+                <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                <a href="contact.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+            </nav>
+            <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="hidden md:flex items-center space-x-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+                <i data-lucide="youtube"></i>
+                <span>Subscribe</span>
+            </a>
+            <button id="mobile-menu-button" class="md:hidden">
+                <i data-lucide="menu" class="text-gray-800"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="index.html#hacks" class="block py-2 text-gray-600 hover:text-indigo-600">Hacks</a>
+            <a href="index.html#blogs" class="block py-2 text-gray-600 hover:text-indigo-600">Blogs</a>
+            <a href="about.html" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
+            <a href="contact.html" class="block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
+            <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="mt-2 flex justify-center items-center space-x-2 bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:from-red-600 hover:to-red-700 transition-all">
+                <i data-lucide="youtube"></i>
+                <span>Subscribe on YouTube</span>
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg text-white pt-32 pb-20 min-h-screen flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-4 leading-tight reveal">
+                    Unlock Math Superpowers You Never Knew You Had.
+                </h1>
+                <p class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 reveal" style="transition-delay: 200ms;">
+                    Discover exclusive math hacks, tricks, and concepts that make learning fun and easy. For students up to Class 10.
+                </p>
+                <div class="flex justify-center items-center space-x-4 reveal" style="transition-delay: 400ms;">
+                    <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                        Watch Hacks on YouTube
+                    </a>
+                    <a href="#hacks" class="bg-white/20 text-white px-8 py-4 rounded-lg font-bold text-lg hover:bg-white/30 transition-all duration-300 transform hover:scale-105 border-2 border-transparent hover:border-white">
+                        Explore Written Hacks
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Math Hacks Section -->
+        <section id="hacks" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-4xl font-bold text-gray-900">Math Hacks & Tricks</h2>
+                    <p class="text-gray-600 mt-2">50+ shortcuts to solve problems faster than ever. New hacks added weekly!</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+                    <!-- Generating 50 links -->
+                    <script>
+                        const hacks = [
+                            "finding (a+b) cube easily", "finding Root 2 on a number line", "finding Root 3 on a number line", "Fast Percentage Calculation", "Fraction to Decimal Shortcut", "Butterfly Method for Fractions",
+                            "Divisibility Rules (7, 13, 17)", "Finding Cube Roots Quickly", "LCM & HCF Tricks", "Algebraic Identities Hack", "Solving Linear Equations Fast", "Pythagoras Triplet Trick",
+                            "Geometry Angle Rules", "Mensuration Formula Hacks", "Trigonometry Table Trick", "Quick Square Roots", "Handshake Problem Formula", "Time & Work Shortcuts", "Speed, Distance, Time Hacks",
+                            "Profit & Loss Percentages", "Simple & Compound Interest", "Calendar Tricks", "Clock Angle Problems", "Permutations Made Easy", "Combinations Simplified", "Probability Shortcuts",
+                            "Statistics Mean/Median/Mode", "Polynomial Division Hack", "Coordinate Geometry Tips", "Logarithm Rules Hack", "Exponents & Powers Tricks", "Set Theory Venn Diagrams",
+                            "Surds & Indices Shortcuts", "Number System Magic", "Simplification with BODMAS", "Ratio & Proportion Tips", "Mixtures & Alligations", "Partnership Problems",
+                            "Age-related Problems", "Pipes & Cisterns", "Boats & Streams", "Data Interpretation Tricks", "Sequence & Series Patterns", "Arithmetic Progression Hacks", "Geometric Progression Hacks",
+                            "Matrices Multiplication Trick", "Determinants Shortcut", "Heights & Distances Tips", "Circles Theorem Hacks", "Quadrilaterals Properties"
+                        ];
+                        const hacksContainer = document.querySelector('#hacks .grid');
+                        const hackColors = [
+                            { bg: 'bg-blue-100', text: 'text-blue-600' },
+                            { bg: 'bg-green-100', text: 'text-green-600' },
+                            { bg: 'bg-red-100', text: 'text-red-600' },
+                            { bg: 'bg-purple-100', text: 'text-purple-600' },
+                            { bg: 'bg-yellow-100', text: 'text-yellow-600' }
+                        ];
+                        hacks.forEach((hack, index) => {
+                            const color = hackColors[index % hackColors.length];
+                            const delay = (index % 5) * 100;
+                            const comingSoon = index < 3 ? '' : '<p class="text-sm ' + color.text + ' mt-2 font-semibold">Coming Soon</p>';
+                            const card = `
+                                <a href="hack${index + 1}.html" class="reveal card-hover-effect bg-gray-50 p-6 rounded-xl border border-gray-200 text-center" style="transition-delay: ${delay}ms;">
+                                    <div class="${color.bg} ${color.text} rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
+                                        <i data-lucide="calculator"></i>
+                                    </div>
+                                    <h3 class="font-semibold text-gray-800">${hack}</h3>
+                                    ${comingSoon}
+                                </a>
+                            `;
+                            hacksContainer.innerHTML += card;
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+
+        <!-- YouTube Promotion Section -->
+        <section class="py-20 bg-gray-900 text-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/2 text-center md:text-left reveal">
+                        <h2 class="text-4xl font-bold mb-4">Visual Learner? We've Got You Covered!</h2>
+                        <p class="text-gray-300 mb-6">
+                            Our YouTube channel, <strong class="text-red-400">Math Time by Alka Ma'am</strong>, breaks down every hack into fun, easy-to-follow video tutorials. See the magic happen live!
+                        </p>
+                        <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="inline-flex items-center space-x-3 bg-gradient-to-r from-red-500 to-red-600 text-white px-8 py-4 rounded-lg font-bold text-lg hover:from-red-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                            <i data-lucide="youtube"></i>
+                            <span>Subscribe for Video Hacks</span>
+                        </a>
+                    </div>
+                    <div class="md:w-1/2 reveal" style="transition-delay: 200ms;">
+                        <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
+                           <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="block w-full h-full">
+                                <img src="https://placehold.co/1280x720/1a202c/ffffff?text=Watch+on+YouTube" alt="YouTube Channel Preview" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+                                     <i data-lucide="play-circle" class="w-20 h-20 text-white opacity-80"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blogs Section -->
+        <section id="blogs" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 reveal">
+                    <h2 class="text-4xl font-bold text-gray-900">Our Math Blog</h2>
+                    <p class="text-gray-600 mt-2">Deeper dives into concepts, study tips, and the fun side of math.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                     <!-- Generating 25 links -->
+                    <script>
+                        const blogs = [
+                            "How to Overcome Math Anxiety", "The Real-Life Application of Trigonometry", "Why Is Pi So Important?", "The History of Zero", "Fun Math Games for Middle Schoolers",
+                            "Building a Strong Foundation in Algebra", "How to Study for a Math Exam", "The Link Between Music and Math", "Famous Mathematicians You Should Know", "Understanding Geometric Proofs",
+                            "The Beauty of the Fibonacci Sequence", "Math in Nature: A Perfect Match", "Careers That Use Math Every Day", "Tips for Memorizing Formulas", "Is Mental Math a Superpower?",
+                            "The Paradoxes That Baffle Mathematicians", "How Video Games Use Math", "Cryptography: The Math of Secrets", "Making Sense of Word Problems", "The Art of Logical Thinking",
+                            "Parent's Guide to Helping with Math", "How to Use an Abacus", "Exploring Different Number Systems", "Math Puzzles to Sharpen Your Mind", "The Future of Mathematics"
+                        ];
+                        const blogsContainer = document.querySelector('#blogs .grid');
+                        const blogColors = [
+                            { bg: 'bg-rose-100', text: 'text-rose-600' },
+                            { bg: 'bg-cyan-100', text: 'text-cyan-600' },
+                            { bg: 'bg-emerald-100', text: 'text-emerald-600' }
+                        ];
+                         blogs.forEach((blog, index) => {
+                            const color = blogColors[index % blogColors.length];
+                            const delay = (index % 3) * 150;
+                            const card = `
+                                <a href="blog${index + 1}.html" class="reveal card-hover-effect bg-gray-50 rounded-xl overflow-hidden border border-gray-200 flex flex-col" style="transition-delay: ${delay}ms;">
+                                    <div class="h-48 ${color.bg} flex items-center justify-center ${color.text}">
+                                        <i data-lucide="lightbulb" class="w-16 h-16"></i>
+                                    </div>
+                                    <div class="p-6 flex-grow">
+                                        <h3 class="font-bold text-xl text-gray-800 mb-2">${blog}</h3>
+                                        <p class="text-gray-600 text-sm">Read our upcoming post on this fascinating topic.</p>
+                                    </div>
+                                     <div class="p-6 pt-0">
+                                        <span class="${color.text} font-semibold">Coming Soon &rarr;</span>
+                                    </div>
+                                </a>
+                            `;
+                            blogsContainer.innerHTML += card;
+                        });
+                    </script>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-indigo-50">
+            <div class="container mx-auto px-6 text-center reveal">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Our Mission</h2>
+                <p class="max-w-3xl mx-auto text-gray-600 text-lg">
+                    At Math Time, we believe that math shouldn't be a source of fear or frustration. Our goal is to provide simple, powerful, and unconventional methods to solve problems, making math enjoyable and accessible for every student. We're dedicated to building confidence and fostering a genuine love for numbers.
+                </p>
+            </div>
+        </section>
+
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- About Column -->
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Math Time</h3>
+                    <p class="text-gray-400">Making mathematics simple, fun, and accessible for everyone.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-red-500"><i data-lucide="youtube"></i></a>
+                        <!-- Add other social links here if needed -->
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#hacks" class="text-gray-400 hover:text-white">Math Hacks</a></li>
+                        <li><a href="#blogs" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-white">YouTube Channel</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Legal Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4">Legal & Compliance</h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white">Terms of Service</a></li>
+                        <li><a href="disclaimer.html" class="text-gray-400 hover:text-white">Disclaimer</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4">Get in Touch</h3>
+                    <p class="text-gray-400 mb-4">Have a question or a hack suggestion? Let us know!</p>
+                    <form action="#">
+                        <input type="email" placeholder="your.email@example.com" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:border-indigo-500 mb-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-indigo-500 to-indigo-600 text-white py-2 rounded-md font-semibold hover:from-indigo-600 hover:to-indigo-700">Submit</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-6 text-center text-gray-500 text-sm">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Math Time. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Sticky Header Shrink
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+        
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    // Optional: unobserve after revealing to save resources
+                    // revealObserver.unobserve(entry.target); 
+                }
+            });
+        }, {
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+
+    </script>
+</body>
+</html>
