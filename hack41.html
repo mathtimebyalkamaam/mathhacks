@@ -1,1 +1,170 @@
+<!DOCTYPE html>
+<html lang=”en”>
+<head>
+    <meta charset=”UTF-8”>
+    <meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+    <title>Boats and Streams Hack – Math Time</title>
+    <script src=https://cdn.tailwindcss.com></script>
+    <link rel=”preconnect” href=https://fonts.googleapis.com>
+    <link rel=”preconnect” href=https://fonts.gstatic crossorigin>
+    <link href=https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@500;700&display=swap rel=”stylesheet”>
+    <script src=https://unpkg.com/lucide@latest></script>
+    <style>
+        Body {
+            Background-color: #1a1a1a;
+            Font-family: ‘Poppins’, sans-serif;
+        }
+        .phone-screen {
+            Background-color: #0d1b2a; /* Professional dark blue whiteboard */
+            Width: 100%;
+            Max-width: 400px;
+            Aspect-ratio: 9 / 16;
+            Border-radius: 30px;
+            Box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            Overflow: hidden;
+            Position: relative;
+        }
+        .text-overlay {
+            Position: absolute;
+            Top: 20%;
+            Left: 5%;
+            Right: 5%;
+            Text-align: center;
+            Font-size: clamp(1.4rem, 6vw, 2.1rem);
+            Font-weight: 700;
+            Color: #e0e1dd;
+            Opacity: 0;
+            Transform: scale(0.95) translateY(20px);
+            Transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .text-overlay.visible {
+            Opacity: 1;
+            Transform: scale(1) translateY(0);
+        }
+        .text-overlay .handwritten {
+            Font-family: ‘Caveat’, cursive;
+            Color: #ffca3a; /* Bright yellow for emphasis */
+            Font-size: 1.3em;
+            Line-height: 1;
+        }
+        .text-overlay .highlight {
+             Color: #80ed99; /* Bright green for answers */
+        }
+        .text-overlay .formula {
+             Color: #fca311; /* Orange for formulas */
+             Font-size: 1.1em;
+        }
+        .replay-button, .youtube-link {
+            Position: absolute;
+            Left: 50%;
+            Transform: translateX(-50%) scale(0.8);
+            Font-size: 1.2rem;
+            Padding: 10px 24px;
+            Border-radius: 50px;
+            Border: none;
+            Font-weight: 700;
+            Cursor: pointer;
+            Transition: all 0.3s ease;
+            Opacity: 0;
+            Visibility: hidden;
+            Box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            Display: flex;
+            Align-items: center;
+            Gap: 8px;
+        }
+        .replay-button {
+            Bottom: 8%;
+            Background-color: #ffca3a;
+            Color: #0d1b2a;
+        }
+        .youtube-link {
+            Bottom: 18%;
+            Background-color: #FF0000;
+            Color: white;
+            Text-decoration: none;
+        }
+        .replay-button.visible, .youtube-link.visible {
+            Opacity: 1;
+            Visibility: visible;
+            Transform: translateX(-50%) scale(1);
+        }
+        .phone-screen a.home-link {
+            Opacity: 0.7;
+            Transition: all 0.3s ease;
+            Position: absolute;
+            Bottom: 24px;
+            Left: 24px;
+        }
+        .phone-screen a.home-link:hover {
+            Opacity: 1;
+            Transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class=”flex items-center justify-center min-h-screen p-4”>
 
+    <div class=”phone-screen”>
+        <div id=”textOverlay” class=”text-overlay”></div>
+        <a href=https://www.youtube.com/@its.mathtime target=”_blank” id=”youtubeLink” class=”youtube-link”>
+            <svg xmlns=http://www.w3.org/2000/svg width=”24” height=”24” viewBox=”0 0 24” fill=”none” stroke=”currentColor” stroke-width=”2” stroke-linecap=”round” stroke-linejoin=”round” class=”lucide lucide-youtube”><path d=”M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z”/><path d=”m10 15 5-3-5-3z”/></svg>
+            <span>Subscribe</span>
+        </a>
+        <button id=”replayBtn” class=”replay-button”>Replay</button>
+        <a href=”index.html” class=”home-link bg-indigo-600/50 hover:bg-indigo-600/80 text-white px-3 py-1 rounded-full transition-all flex items-center gap-1”>
+            <I data-lucide=”home” class=”w-4 h-4”></i>
+            <span class=”text-xs”>Home</span>
+        </a>
+    </div>
+
+    <script>
+        Lucide.createIcons();
+        Const textOverlay = document.getElementById(‘textOverlay’);
+        Const replayBtn = document.getElementById(‘replayBtn’);
+        Const youtubeLink = document.getElementById(‘youtubeLink’);
+
+        Const wait = (ms) => new Promise(res => setTimeout(res, ms));
+
+        Async function showText(message, duration = 2500) {
+            textOverlay.innerHTML = message;
+            textOverlay.classList.add(‘visible’);
+            await wait(duration);
+            textOverlay.classList.remove(‘visible’);
+            await wait(400);
+        }
+        
+        Async function playAnimation() {
+            replayBtn.classList.remove(‘visible’);
+            youtubeLink.classList.remove(‘visible’);
+            
+            await showText(“The Ultimate <span class=’handwritten’>Boats & Streams</span> Wow-Hack!”);
+            
+            await showText(“Problem: A boat’s downstream speed is 14 km/h and upstream is 6 km/h. Find the boat and stream speed.”, 6000);
+
+            await showText(“Forget long equations! Here’s the magic trick.”, 3500);
+            
+            await showText(“To find the <span class=’handwritten’>Boat’s Speed</span> in still water, just find the <span class=’highlight’>average</span> of the two speeds!”, 5000);
+
+            await showText(“<span class=’formula’>(Downstream + Upstream) / 2</span>”, 4000);
+            
+            await showText(“= (14 + 6) / 2<br>= 20 / 2 = <span class=’highlight’>10 km/h</span>”, 4000);
+
+            await showText(“And for the <span class=’handwritten’>Stream’s Speed</span>, it’s just <span class=’highlight’>half the difference</span>!”, 4500);
+
+            await showText(“<span class=’formula’>(Downstream – Upstream) / 2</span>”, 4000);
+            
+            await showText(“= (14 – 6) / 2<br>= 8 / 2 = <span class=’highlight’>4 km/h</span>”, 4000);
+
+            await showText(“Boat Speed = 10 km/h<br>Stream Speed = 4 km/h<br><span class=’handwritten’>That’s it! Wow!</span>”, 5000);
+            
+            await showText(“<span style=’font-family: \”Caveat\”, cursive; font-size: 2rem; color: #ffca3a; line-height: 1.2;’>Math Time</span><br><span style=’font-size: 1.2rem; color: #e0e1dd; opacity: 0.9;’>by Alka Ma’am</span>”, 3000);
+
+            youtubeLink.classList.add(‘visible’);
+            replayBtn.classList.add(‘visible’);
+        }
+
+        replayBtn.addEventListener(‘click’, playAnimation);
+        playAnimation();
+
+    </script>
+</body>
+</html>
