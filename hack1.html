@@ -1,375 +1,178 @@
-<!--
-  (a+b)³ Whiteboard Animation - 30 Second Timeline for Voice Sync (ULTIMATE TUTORIAL Style)
-
-  - 0.0s – 0.5s: Whiteboard wipe-in effect.
-  - 0.5s – 1.5s: Title "(a+b)³ SOLVED!" writes on.
-  - 1.5s - 2.5s: Instruction "First, the standard formula:" appears.
-  - 2.5s – 5.5s: The standard formula "a³ + 3a²b + 3ab² + b³" is written out, one term at a time.
-  - 5.5s – 6.5s: Instruction "The trick is to simplify the middle." appears.
-  - 6.5s – 8.5s: An underline appears below the middle terms, which then visually factors into "3ab(a+b)".
-  - 8.5s – 10.5s: The final "trick" formula "a³ + 3ab(a+b) + b³" is written clearly.
-  - 10.5s – 11.3s: A separator line is drawn.
-  - 11.3s – 12.3s: Instruction "Let's try an example:" appears.
-  - 12.3s – 13.1s: The example problem "(2+3)³" appears.
-  - 13.1s – 14.1s: Instruction "Step 1: Calculate the 'Ends'" appears.
-  - 14.1s – 17.5s: The "Ends" calculation builds slowly: "2³ + 3³" -> "8 + 27" -> result "35".
-  - 17.5s - 18.5s: Instruction "Step 2: Calculate the 'Middle'" appears.
-  - 18.5s – 22.5s: The "Middle" calculation builds slowly: "3(2)(3)(2+3)" -> "3(6)(5)" -> result "90".
-  - 22.5s - 23.5s: Instruction "Finally, add them up!" appears.
-  - 23.5s – 26.0s: The results "35" and "90" slide to the bottom, forming "35 + 90".
-  - 26.0s – 28.0s: A final arrow draws down, and the answer "125" bursts in with particles and a checkmark.
-  - 28.0s – 30.0s: The final hook and CTA fade in.
-  - 30.0s: Animation freezes on the final, complete board showing all steps and instructions.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>(a+b)³ Animation Short</title>
+    <title>(a+b)³ Easily Hack - Math Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root {
-            --bg-color: #fcfcfc;
-            --ink-color: #1a1a1a;
-            --accent-color-1: #0057FF; /* Vibrant Blue */
-            --accent-color-2: #FFAA00; /* Warm Orange/Yellow */
-            --instruction-color: #4a4a4a;
-            --font-family: 'Patrick Hand', cursive;
-            --duration: 30s;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #111;
-            overflow: hidden;
-            font-family: var(--font-family);
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
         }
-
-        #main-container {
-            width: 100vmin;
-            height: calc(100vmin * 16 / 9);
-            max-width: calc(100vh * 9 / 16);
-            max-height: 100vh;
-            position: relative;
-            background-color: var(--bg-color);
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
-            background-image: radial-gradient(circle, #0000000a 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        #whiteboard {
+        .phone-screen {
+            background-color: #0d1b2a; /* Professional dark blue whiteboard */
             width: 100%;
-            height: 100%;
-            display: block;
+            max-width: 400px;
+            aspect-ratio: 9 / 16;
+            border-radius: 30px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            position: relative;
         }
-
-        /* --- Animation Control & States --- */
-        .hidden {
+        .text-overlay {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            right: 5%;
+            text-align: center;
+            font-size: clamp(1.4rem, 6vw, 2.1rem);
+            font-weight: 700;
+            color: #e0e1dd;
             opacity: 0;
-            pointer-events: none;
+            transform: scale(0.95) translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
         }
-        
-        .animated-path {
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-            transition: stroke-dashoffset 0.8s cubic-bezier(0.47, 0, 0.745, 0.715);
+        .text-overlay.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
         }
-        .animated-path.draw { stroke-dashoffset: 0; }
-
-        /* Generic element animations */
-        .pop-in { animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
-        .fade-in { animation: fadeIn 0.6s ease-out forwards; }
-        .slide-in-from-top { animation: slideInFromTop 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes popIn {
-            0% { transform: scale(0.3); opacity: 0; }
-            60% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); opacity: 1; }
+        .text-overlay .handwritten {
+            font-family: 'Caveat', cursive;
+            color: #ffca3a; /* Bright yellow for emphasis */
+            font-size: 1.3em;
+            line-height: 1;
         }
-        @keyframes slideInFromTop {
-            from { transform: translateY(-50px); opacity: 0; }
-            to { transform: translateY(0px); opacity: 1; }
+        .text-overlay .highlight {
+             color: #80ed99; /* Bright green for answers */
         }
-        
-        /* Specific element styles */
-        .accent-fill-1 { fill: var(--accent-color-1); }
-        .accent-fill-2 { fill: var(--accent-color-2); }
-        .accent-stroke-1 { stroke: var(--accent-color-1); }
-        .accent-stroke-2 { stroke: var(--accent-color-2); }
-        .instruction-text { fill: var(--instruction-color); font-size: 50px; text-anchor: start; }
-
-        #final_result { font-size: 260px; font-weight: 700; }
-        
-        /* Particle burst effect */
-        .particle { opacity: 0; }
-        .particle.burst { animation: particle-burst 1s cubic-bezier(0.1, 0.8, 0.7, 1) forwards; }
-        @keyframes particle-burst {
-            0% { transform: translate(0, 0) scale(0.5); opacity: 1; }
-            100% { transform: var(--transform-end) scale(1); opacity: 0; }
+        .text-overlay .formula {
+             color: #fca311; /* Orange for formulas */
+             font-size: 1.1em;
         }
-        
-        /* Wipe effect */
-        #wipe-rect {
-            fill: var(--bg-color);
-            transition: transform 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        .replay-button, .youtube-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            font-size: 1.2rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        #wipe-rect.wipe-away { transform: translateY(-101%); }
-
-        /* --- Controls --- */
-        #controls { position: fixed; bottom: 10px; right: 10px; display: flex; gap: 5px; opacity: 0.2; transition: opacity 0.3s; }
-        #controls:hover { opacity: 1; }
-        #controls button { background: #fff; border: 1px solid #ccc; border-radius: 4px; padding: 5px 10px; cursor: pointer; font-family: sans-serif; }
+        .replay-button {
+            bottom: 8%;
+            background-color: #ffca3a;
+            color: #0d1b2a;
+        }
+        .youtube-link {
+            bottom: 18%;
+            background-color: #FF0000;
+            color: white;
+            text-decoration: none;
+        }
+        .replay-button.visible, .youtube-link.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) scale(1);
+        }
+        .phone-screen a.home-link {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+        }
+        .phone-screen a.home-link:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
     </style>
 </head>
-<body>
-    <div id="main-container">
-        <a href="index.html" class="back-button" style="position: absolute; bottom: 0; left: 0; z-index: 100; background: white; padding: 10px 15px; border-radius: 0 50px 0 0; text-decoration: none; color: #333; font-family: sans-serif; font-weight: bold; box-shadow: 0 -2px 10px rgba(0,0,0,0.2); display: flex; align-items: center; gap: 5px;">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-            Back
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="phone-screen">
+        <div id="textOverlay" class="text-overlay"></div>
+        <a href="https://www.youtube.com/@its.mathtime" target="_blank" id="youtubeLink" class="youtube-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+            <span>Subscribe</span>
         </a>
-        <svg id="whiteboard" viewBox="0 0 1080 1920" preserveAspectRatio="xMidYMid meet">
-            <g id="animation-group" style="font-size:70px; font-family: var(--font-family); text-anchor: middle;">
-                <!-- SCENE 1: Title -->
-                <g id="scene1_title" class="hidden">
-                    <text x="450" y="100" font-size="90px">(a+b)³</text>
-                    <text x="750" y="100" font-size="90px" class="accent-fill-2 hidden" id="title_solved">SOLVED!</text>
-                </g>
-
-                <!-- SCENE 2: The Formula Derivation -->
-                <g id="scene2_formula">
-                    <text id="instr_1" x="50" y="180" class="instruction-text hidden">First, the standard formula:</text>
-                    <text id="formula_full_1" x="190" y="270" class="hidden">a³</text>
-                    <text id="formula_full_2" x="400" y="270" class="hidden">+ 3a²b</text>
-                    <text id="formula_full_3" x="630" y="270" class="hidden">+ 3ab²</text>
-                    <text id="formula_full_4" x="830" y="270" class="hidden">+ b³</text>
-
-                    <text id="instr_2" x="50" y="340" class="instruction-text hidden">The trick is to simplify the middle.</text>
-                    <path id="underline_middle" d="M300 300 H 760" stroke-width="5" stroke="var(--accent-color-1)" class="animated-path"></path>
-                    <text id="formula_factored" x="530" y="410" font-size="65px" class="hidden accent-fill-1">3ab(a+b)</text>
-
-                    <text id="formula_trick_1" x="260" y="510" class="hidden">a³</text>
-                    <text id="formula_trick_2" x="540" y="510" font-size="65px" class="hidden accent-fill-1">+ 3ab(a+b) +</text>
-                    <text id="formula_trick_3" x="820" y="510" class="hidden">b³</text>
-                </g>
-
-                <!-- Separator Line -->
-                <path id="separator" class="animated-path" d="M100 570 H 980" stroke-width="5" stroke-dasharray="880" stroke-dashoffset="880"></path>
-
-                <!-- SCENE 3: The Example -->
-                <g id="scene3_example">
-                    <text id="instr_3" x="50" y="640" class="instruction-text hidden">Let's try an example:</text>
-                    <text id="example_problem" x="540" y="730" font-size="90px" class="hidden">(<tspan class="accent-fill-1">2</tspan>+<tspan class="accent-fill-2">3</tspan>)³</text>
-                </g>
-                
-                <!-- SCENE 4: The Calculation -->
-                <g id="scene4_calculation">
-                    <!-- Ends Calculation -->
-                    <g id="calc_ends">
-                        <text id="instr_ends" x="50" y="820" class="instruction-text hidden">Step 1: Calculate the 'Ends'</text>
-                        <text id="calc_ends_1" x="280" y="910" class="hidden"><tspan class="accent-fill-1">2</tspan>³ + <tspan class="accent-fill-2">3</tspan>³</text>
-                        <text id="calc_ends_2" x="280" y="1000" class="hidden">8 + 27</text>
-                        <path id="arrow_ends" d="M280 1030 V 1080" stroke-width="8" stroke="var(--ink-color)" fill="none" class="animated-path accent-stroke-1"></path>
-                        <text id="calc_ends_final" x="280" y="1170" font-size="110px" class="hidden accent-fill-1">35</text>
-                    </g>
-                     <!-- Middle Calculation -->
-                    <g id="calc_middle">
-                        <text id="instr_middle" x="520" y="820" class="instruction-text hidden">Step 2: Calculate the 'Middle'</text>
-                        <text id="calc_middle_1" x="750" y="910" font-size="65px" class="hidden">3(<tspan class="accent-fill-1">2</tspan>)(<tspan class="accent-fill-2">3</tspan>)(<tspan class="accent-fill-1">2</tspan>+<tspan class="accent-fill-2">3</tspan>)</text>
-                        <text id="calc_middle_2" x="750" y="1000" class="hidden">3(6)(5)</text>
-                        <path id="arrow_middle" d="M750 1030 V 1080" stroke-width="8" stroke="var(--ink-color)" fill="none" class="animated-path accent-stroke-2"></path>
-                        <text id="calc_middle_final" x="750" y="1170" font-size="110px" class="hidden accent-fill-2">90</text>
-                    </g>
-                </g>
-
-                <!-- SCENE 5: Final Result -->
-                <g id="scene5_final">
-                    <text id="instr_final" x="50" y="1260" class="instruction-text hidden">Finally, add them up!</text>
-                    <text id="final_plus" x="540" y="1400" font-size="110px" class="hidden">+</text>
-                    <path id="arrow_final" d="M540 1440 V 1510" stroke-width="10" stroke="var(--ink-color)" fill="none" class="animated-path"></path>
-                    <text id="final_result" x="540" y="1650" class="hidden accent-fill-1">125</text>
-                    <path id="final_checkmark" d="M780 1550 L 880 1700 L 1080 1400" stroke-width="35" stroke="var(--accent-color-2)" fill="none" class="animated-path"></path>
-                </g>
-                
-                <!-- Particle Burst Group -->
-                <g id="particles" transform="translate(540, 1630)"></g>
-
-                <!-- SCENE 6: Hook -->
-                <g id="scene6_hook" class="hidden" text-anchor="middle">
-                    <text x="540" y="1820" font-size="70px" fill="#333">Now you know the trick.</text>
-                    <text x="540" y="1900" font-size="60px" fill="#555">Use it wisely.</text>
-                </g>
-            </g>
-            <rect id="wipe-rect" width="100%" height="101%" y="-101%"></rect>
-        </svg>
-    </div>
-
-    <div id="controls">
-        <button id="playPauseBtn">Pause</button>
-        <button id="restartBtn">Restart</button>
-        <button id="exportBtn">Export WebM</button>
+        <button id="replayBtn" class="replay-button">Replay</button>
+        <a href="index.html" class="home-link bg-indigo-600/50 hover:bg-indigo-600/80 text-white px-3 py-1 rounded-full transition-all flex items-center gap-1">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span class="text-xs">Home</span>
+        </a>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const el = id => document.getElementById(id);
-            const elements = {
-                wipeRect: el('wipe-rect'), scene1: el('scene1_title'), titleSolved: el('title_solved'),
-                instr_1: el('instr_1'), formula_full_1: el('formula_full_1'), formula_full_2: el('formula_full_2'), formula_full_3: el('formula_full_3'), formula_full_4: el('formula_full_4'),
-                instr_2: el('instr_2'), underline_middle: el('underline_middle'), formula_factored: el('formula_factored'),
-                formula_trick_1: el('formula_trick_1'), formula_trick_2: el('formula_trick_2'), formula_trick_3: el('formula_trick_3'),
-                separator: el('separator'),
-                instr_3: el('instr_3'), example_problem: el('example_problem'),
-                instr_ends: el('instr_ends'), calc_ends_1: el('calc_ends_1'), calc_ends_2: el('calc_ends_2'), arrow_ends: el('arrow_ends'), calc_ends_final: el('calc_ends_final'),
-                instr_middle: el('instr_middle'), calc_middle_1: el('calc_middle_1'), calc_middle_2: el('calc_middle_2'), arrow_middle: el('arrow_middle'), calc_middle_final: el('calc_middle_final'),
-                instr_final: el('instr_final'), final_plus: el('final_plus'), arrow_final: el('arrow_final'), final_result: el('final_result'), final_checkmark: el('final_checkmark'),
-                particles: el('particles'), scene6: el('scene6_hook'),
-                playPauseBtn: el('playPauseBtn'), restartBtn: el('restartBtn'), exportBtn: el('exportBtn'), mainContainer: el('main-container'),
-            };
+        lucide.createIcons();
+        const textOverlay = document.getElementById('textOverlay');
+        const replayBtn = document.getElementById('replayBtn');
+        const youtubeLink = document.getElementById('youtubeLink');
 
-            let animationFrameId, startTime = 0, pauseTime = 0, isPaused = false;
-            const DURATION = 30000;
+        const wait = (ms) => new Promise(res => setTimeout(res, ms));
 
-            const timeline = [
-                { time: 0, action: () => { elements.wipeRect.style.transform = 'translateY(0)'; } },
-                { time: 50, action: () => { elements.wipeRect.classList.add('wipe-away'); } },
-                { time: 500, action: () => { elements.scene1.classList.remove('hidden'); elements.scene1.classList.add('slide-in-from-top'); } },
-                { time: 1200, action: () => { elements.titleSolved.classList.remove('hidden'); elements.titleSolved.classList.add('pop-in'); } },
-                
-                { time: 1800, action: () => { elements.instr_1.classList.remove('hidden'); elements.instr_1.classList.add('fade-in'); } },
-                { time: 2800, action: () => { elements.formula_full_1.classList.remove('hidden'); elements.formula_full_1.classList.add('fade-in'); }},
-                { time: 3500, action: () => { elements.formula_full_2.classList.remove('hidden'); elements.formula_full_2.classList.add('fade-in'); }},
-                { time: 4200, action: () => { elements.formula_full_3.classList.remove('hidden'); elements.formula_full_3.classList.add('fade-in'); }},
-                { time: 4900, action: () => { elements.formula_full_4.classList.remove('hidden'); elements.formula_full_4.classList.add('fade-in'); }},
-                
-                { time: 5800, action: () => { elements.instr_2.classList.remove('hidden'); elements.instr_2.classList.add('fade-in'); } },
-                { time: 6800, action: () => { elements.underline_middle.classList.add('draw'); }},
-                { time: 7600, action: () => { elements.formula_factored.classList.remove('hidden'); elements.formula_factored.classList.add('pop-in'); }},
-
-                { time: 8800, action: () => { elements.formula_trick_1.classList.remove('hidden'); elements.formula_trick_1.classList.add('fade-in'); }},
-                { time: 9500, action: () => { elements.formula_trick_2.classList.remove('hidden'); elements.formula_trick_2.classList.add('fade-in'); }},
-                { time: 10200, action: () => { elements.formula_trick_3.classList.remove('hidden'); elements.formula_trick_3.classList.add('fade-in'); }},
-
-                { time: 10800, action: () => { elements.separator.classList.add('draw'); }},
-                { time: 11500, action: () => { elements.instr_3.classList.remove('hidden'); elements.instr_3.classList.add('fade-in'); } },
-                { time: 12500, action: () => { elements.example_problem.classList.remove('hidden'); elements.example_problem.classList.add('fade-in'); } },
-                
-                { time: 13300, action: () => { elements.instr_ends.classList.remove('hidden'); elements.instr_ends.classList.add('fade-in'); } },
-                { time: 14300, action: () => { elements.calc_ends_1.classList.remove('hidden'); elements.calc_ends_1.classList.add('fade-in'); } },
-                { time: 15400, action: () => { elements.calc_ends_2.classList.remove('hidden'); elements.calc_ends_2.classList.add('fade-in'); } },
-                { time: 16400, action: () => { elements.arrow_ends.classList.add('draw'); } },
-                { time: 17000, action: () => { elements.calc_ends_final.classList.remove('hidden'); elements.calc_ends_final.classList.add('pop-in'); } },
-                
-                { time: 17800, action: () => { elements.instr_middle.classList.remove('hidden'); elements.instr_middle.classList.add('fade-in'); } },
-                { time: 18800, action: () => { elements.calc_middle_1.classList.remove('hidden'); elements.calc_middle_1.classList.add('fade-in'); } },
-                { time: 20200, action: () => { elements.calc_middle_2.classList.remove('hidden'); elements.calc_middle_2.classList.add('fade-in'); } },
-                { time: 21500, action: () => { elements.arrow_middle.classList.add('draw'); } },
-                { time: 22000, action: () => { elements.calc_middle_final.classList.remove('hidden'); elements.calc_middle_final.classList.add('pop-in'); } },
-                
-                { time: 22800, action: () => { elements.instr_final.classList.remove('hidden'); elements.instr_final.classList.add('fade-in'); } },
-                { time: 23800, action: () => {
-                    ['calc_ends_final', 'calc_middle_final'].forEach(k => {
-                        elements[k].style.transition = 'transform 0.8s cubic-bezier(0.5, 0, 0.5, 1)';
-                    });
-                    elements.calc_ends_final.style.transform = 'translate(130px, 230px)';
-                    elements.calc_middle_final.style.transform = 'translate(-140px, 230px)';
-                }},
-                { time: 24800, action: () => { elements.final_plus.classList.remove('hidden'); elements.final_plus.classList.add('pop-in'); }},
-                { time: 25800, action: () => { elements.arrow_final.classList.add('draw'); }},
-                { time: 26300, action: () => {
-                    elements.final_result.classList.remove('hidden');
-                    elements.final_result.classList.add('pop-in');
-                    triggerParticleBurst();
-                }},
-                { time: 27000, action: () => { el('final_checkmark').classList.add('draw'); }},
-                { time: 28000, action: () => { elements.scene6.classList.remove('hidden'); elements.scene6.classList.add('fade-in'); }},
-            ];
+        async function showText(message, duration = 2500) {
+            textOverlay.innerHTML = message;
+            textOverlay.classList.add('visible');
+            await wait(duration);
+            textOverlay.classList.remove('visible');
+            await wait(400);
+        }
+        
+        async function playAnimation() {
+            replayBtn.classList.remove('visible');
+            youtubeLink.classList.remove('visible');
             
-            let executedActions = new Set();
-            function animationLoop(currentTime) {
-                if (!startTime) startTime = currentTime;
-                let elapsedTime = isPaused ? pauseTime : currentTime - startTime;
-                if (elapsedTime > DURATION) elapsedTime = DURATION;
-                timeline.forEach((event, index) => {
-                    if (elapsedTime >= event.time && !executedActions.has(index)) {
-                        event.action(); executedActions.add(index);
-                    }
-                });
-                if (elapsedTime < DURATION) { animationFrameId = requestAnimationFrame(animationLoop); } 
-                else if (!isPaused) { isPaused = true; elements.playPauseBtn.textContent = 'Play'; }
-            }
+            await showText("The <span class='handwritten'>(a+b)³</span> Wow-Hack!");
             
-            function createParticles() {
-                const particleCount = 50;
-                const colors = [ 'var(--accent-color-1)', 'var(--accent-color-2)', '#FFFFFF'];
-                for (let i = 0; i < particleCount; i++) {
-                    const type = Math.random() > 0.5 ? 'circle' : 'rect';
-                    const particle = document.createElementNS("http://www.w3.org/2000/svg", type);
-                    particle.setAttribute("class", "particle");
-                    if(type === 'circle') {
-                        particle.setAttribute("r", Math.random() * 8 + 4);
-                    } else { const size = Math.random() * 12 + 6; particle.setAttribute("width", size); particle.setAttribute("height", size); }
-                    particle.setAttribute("fill", colors[i % colors.length]);
-                    elements.particles.appendChild(particle);
-                }
-            }
+            await showText("Problem: How to easily remember the formula for (a+b)³?", 4000);
 
-            function triggerParticleBurst() {
-                elements.particles.childNodes.forEach(p => {
-                    const angle = Math.random() * 360, radius = Math.random() * 350 + 250;
-                    const x = Math.cos(angle * Math.PI / 180) * radius;
-                    const y = Math.sin(angle * Math.PI / 180) * radius;
-                    const rot = Math.random() * 720 - 360;
-                    p.style.setProperty('--transform-end', `translate(${x}px, ${y}px) rotate(${rot}deg)`);
-                    p.classList.remove('burst'); void p.offsetWidth; p.classList.add('burst');
-                });
-            }
-
-            function playAnimation() { if (isPaused) { isPaused = false; startTime = performance.now() - pauseTime; elements.playPauseBtn.textContent = 'Pause'; animationFrameId = requestAnimationFrame(animationLoop); } }
-            function pauseAnimation() { if (!isPaused) { isPaused = true; pauseTime = performance.now() - startTime; elements.playPauseBtn.textContent = 'Play'; cancelAnimationFrame(animationFrameId); } }
-            function restartAnimation() {
-                pauseAnimation(); isPaused = false; startTime = 0; pauseTime = 0; executedActions.clear();
-                document.querySelectorAll('.pop-in, .fade-in, .draw, .wipe-away').forEach(e => e.classList.remove('pop-in', 'fade-in', 'draw', 'wipe-away'));
-                document.querySelectorAll('[style*="transform"], [style*="transition"]').forEach(e => { e.style.transform = ''; e.style.transition = ''; });
-                document.querySelectorAll('#animation-group > g, #animation-group text, #animation-group path').forEach(e => e.classList.add('hidden'));
-                
-                cancelAnimationFrame(animationFrameId); elements.playPauseBtn.textContent = 'Pause';
-                requestAnimationFrame(animationLoop);
-            }
+            await showText("The secret is a beautiful pattern called <span class='handwritten'>Pascal's Triangle!</span>", 4000);
             
-            elements.playPauseBtn.addEventListener('click', () => isPaused ? playAnimation() : pauseAnimation());
-            elements.restartBtn.addEventListener('click', restartAnimation);
+            await showText("The coefficients for (a+b)³ are hidden in the 4th row...", 4000);
+            
+            await showText("The row is: <span class='highlight'>1, 3, 3, 1</span>", 3000);
+            
+            await showText("Now for the powers. The powers of 'a' go down...", 3000);
+            
+            await showText("<span class='formula'>a³, a², a¹, a⁰</span>", 3000);
+            
+            await showText("And the powers of 'b' go up!", 2500);
+            
+            await showText("<span class='formula'>b⁰, b¹, b², b³</span>", 3000);
 
-            let mediaRecorder, recordedChunks = [];
-            elements.exportBtn.addEventListener('click', () => {
-                if (mediaRecorder && mediaRecorder.state === 'recording') return;
-                const DURATION_MS = DURATION; // Use the same duration for recording
-                mediaRecorder = new MediaRecorder(elements.mainContainer.captureStream(60), { mimeType: 'video/webm; codecs=vp9' });
-                mediaRecorder.ondataavailable = e => { if (e.data.size > 0) recordedChunks.push(e.data); };
-                mediaRecorder.onstart = () => { elements.exportBtn.textContent = 'Recording...'; elements.exportBtn.disabled = true; restartAnimation(); };
-                mediaRecorder.onstop = () => {
-                    const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(recordedChunks, { type: 'video/webm' }));
-                    a.download = 'youtube_short_animation.webm'; document.body.appendChild(a); a.click();
-                    URL.revokeObjectURL(a.href); document.body.removeChild(a); recordedChunks = [];
-                    elements.exportBtn.textContent = 'Export WebM'; elements.exportBtn.disabled = false;
-                };
-                mediaRecorder.start();
-                setTimeout(() => { if (mediaRecorder.state === 'recording') mediaRecorder.stop(); }, DURATION_MS);
-            });
+            await showText("Now, combine the coefficients and the powers...", 3500);
 
-            createParticles();
-            requestAnimationFrame(animationLoop);
-        });
+            await showText("<span class='highlight'>1</span>a³b⁰ + <span class='highlight'>3</span>a²b¹ + <span class='highlight'>3</span>a¹b² + <span class='highlight'>1</span>a⁰b³", 5000);
+            
+            await showText("Clean it up, and you get the magic formula!", 3000);
+            
+            await showText("= <span class='highlight'>a³ + 3a²b + 3ab² + b³</span>. Wow!", 5000);
+
+            await showText("You can find the coefficients for any power of (a+b) this way!", 4000);
+
+            await showText("<span style='font-family: \"Caveat\", cursive; font-size: 2rem; color: #ffca3a; line-height: 1.2;'>Math Time</span><br><span style='font-size: 1.2rem; color: #e0e1dd; opacity: 0.9;'>by Alka Ma'am</span>", 3000);
+
+            youtubeLink.classList.add('visible');
+            replayBtn.classList.add('visible');
+        }
+
+        replayBtn.addEventListener('click', playAnimation);
+        playAnimation();
+
     </script>
 </body>
 </html>
