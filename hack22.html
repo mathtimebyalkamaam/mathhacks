@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar Tricks - Math Time</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            background-color: #1a1a1a;
+            font-family: 'Poppins', sans-serif;
+        }
+        .phone-screen {
+            background-color: #0d1b2a; /* Professional dark blue whiteboard */
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 9 / 16;
+            border-radius: 30px;
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+        .text-overlay {
+            position: absolute;
+            top: 20%;
+            left: 5%;
+            right: 5%;
+            text-align: center;
+            font-size: clamp(1.4rem, 6vw, 2.1rem);
+            font-weight: 700;
+            color: #e0e1dd;
+            opacity: 0;
+            transform: scale(0.95) translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .text-overlay.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+        .text-overlay .handwritten {
+            font-family: 'Caveat', cursive;
+            color: #ffca3a; /* Bright yellow for emphasis */
+            font-size: 1.3em;
+            line-height: 1;
+        }
+        .text-overlay .highlight {
+             color: #80ed99; /* Bright green for answers */
+        }
+        .text-overlay .formula {
+             color: #fca311; /* Orange for formulas */
+             font-size: 1.1em;
+        }
+        .replay-button, .youtube-link {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            font-size: 1.2rem;
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .replay-button {
+            bottom: 8%;
+            background-color: #ffca3a;
+            color: #0d1b2a;
+        }
+        .youtube-link {
+            bottom: 18%;
+            background-color: #FF0000;
+            color: white;
+            text-decoration: none;
+        }
+        .replay-button.visible, .youtube-link.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) scale(1);
+        }
+        .phone-screen a.home-link {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            position: absolute;
+            bottom: 24px;
+            left: 24px;
+        }
+        .phone-screen a.home-link:hover {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
 
+    <div class="phone-screen">
+        <div id="textOverlay" class="text-overlay"></div>
+        <a href="https://www.youtube.com/@its.mathtime" target="_blank" id="youtubeLink" class="youtube-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-youtube"><path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17Z"/><path d="m10 15 5-3-5-3z"/></svg>
+            <span>Subscribe</span>
+        </a>
+        <button id="replayBtn" class="replay-button">Replay</button>
+        <a href="index.html" class="home-link bg-indigo-600/50 hover:bg-indigo-600/80 text-white px-3 py-1 rounded-full transition-all flex items-center gap-1">
+            <i data-lucide="home" class="w-4 h-4"></i>
+            <span class="text-xs">Home</span>
+        </a>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        const textOverlay = document.getElementById('textOverlay');
+        const replayBtn = document.getElementById('replayBtn');
+        const youtubeLink = document.getElementById('youtubeLink');
+
+        const wait = (ms) => new Promise(res => setTimeout(res, ms));
+
+        async function showText(message, duration = 2500) {
+            textOverlay.innerHTML = message;
+            textOverlay.classList.add('visible');
+            await wait(duration);
+            textOverlay.classList.remove('visible');
+            await wait(400);
+        }
+        
+        async function playAnimation() {
+            replayBtn.classList.remove('visible');
+            youtubeLink.classList.remove('visible');
+            
+            await showText("The Amazing <span class='handwritten'>Calendar Repeat</span> Hack!");
+            
+            await showText("When will the 2023 calendar be exactly the same again?", 3500);
+
+            await showText("It's all about a <span class='handwritten'>secret code!</span> The trick depends on the last leap year.", 4000);
+            
+            await showText("Here are the simple rules...", 2500);
+
+            await showText("If your year is a...<br><span class='formula'>Leap Year + 1</span><br>...add <span class='highlight'>6 years</span>.", 4000);
+
+            await showText("If your year is a...<br><span class='formula'>Leap Year + 2</span><br>...add <span class='highlight'>11 years</span>.", 4000);
+
+            await showText("If your year is a...<br><span class='formula'>Leap Year + 3</span><br>...add <span class='highlight'>11 years</span>.", 4000);
+
+            await showText("And if it's a <span class='formula'>Leap Year</span> itself...<br>...add <span class='highlight'>28 years</span>!", 4000);
+
+            await showText("Let's solve for <span class='handwritten'>2023</span>. The last leap year was 2020.", 4000);
+            
+            await showText("2023 is <span class='formula'>2020 + 3</span>. So it's a 'Leap Year + 3' case.", 4000);
+
+            await showText("The rule is: add <span class='highlight'>11 years</span>!", 3000);
+
+            await showText("2023 + 11 = <span class='highlight'>2034</span>", 3000);
+
+            await showText("The 2023 calendar will repeat in <span class='handwritten'>2034!</span> Wow!", 4000);
+            
+            await showText("<span style='font-family: \\'Caveat\\', cursive; font-size: 2rem; color: #ffca3a; line-height: 1.2;'>Math Time</span><br><span style='font-size: 1.2rem; color: #e0e1dd; opacity: 0.9;'>by Alka Ma'am</span>", 3000);
+
+            youtubeLink.classList.add('visible');
+            replayBtn.classList.add('visible');
+        }
+
+        replayBtn.addEventListener('click', playAnimation);
+        playAnimation();
+
+    </script>
+</body>
+</html>
