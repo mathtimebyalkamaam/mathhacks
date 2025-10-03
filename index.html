@@ -6,7 +6,7 @@
     <title>Math Time - Unlock the Secrets of Mathematics</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
@@ -113,10 +113,10 @@
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12 reveal">
                     <h2 class="text-4xl font-bold text-gray-900">Math Hacks & Tricks</h2>
-                    <p class="text-gray-600 mt-2">50+ shortcuts to solve problems faster than ever. New hacks added weekly!</p>
+                    <p class="text-gray-600 mt-2">75+ shortcuts to solve problems faster than ever. New hacks added weekly!</p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-                    <!-- Generating 50 links -->
+                    <!-- Generating 75 links -->
                     <script>
                         const hacks = [
                             "finding (a+b) cube easily", "finding Root 2 on a number line", "finding Root 3 on a number line", "Fast Percentage Calculation", "Fraction to Decimal Shortcut", "Butterfly Method for Fractions",
@@ -126,7 +126,12 @@
                             "Statistics Mean/Median/Mode", "Polynomial Division Hack", "Coordinate Geometry Tips", "Logarithm Rules Hack", "Exponents & Powers Tricks", "Set Theory Venn Diagrams",
                             "Surds & Indices Shortcuts", "Number System Magic", "Simplification with BODMAS", "Ratio & Proportion Tips", "Mixtures & Alligations", "Partnership Problems",
                             "Age-related Problems", "Pipes & Cisterns", "Boats & Streams", "Data Interpretation Tricks", "Sequence & Series Patterns", "Arithmetic Progression Hacks", "Geometric Progression Hacks",
-                            "Matrices Multiplication Trick", "Determinants Shortcut", "Heights & Distances Tips", "Circles Theorem Hacks", "Quadrilaterals Properties"
+                            "Matrices Multiplication Trick", "Determinants Shortcut", "Heights & Distances Tips", "Circles Theorem Hacks", "Quadrilaterals Properties",
+                            "Area of a Triangle (Heron's Formula)", "Surface Area of a Sphere", "Volume of a Cone", "Understanding Square Numbers", "Prime Factorization Trees",
+                            "Solving Quadratic Equations by Factoring", "The Remainder Theorem", "Angle Sum Property of a Polygon", "Midpoint Theorem", "Basic Trigonometric Identities (sin²/cos²)",
+                            "Unit Conversion Tricks", "Binary Numbers Explained", "Vedic Maths - Multiplication by 11", "Vedic Maths - Squaring numbers ending in 5", "Bar Graphs vs. Pie Charts",
+                            "Finding the nth term of a GP", "Sum of a GP", "Distance Formula", "Section Formula", "Area of a Rhombus",
+                            "Properties of Tangents", "Cyclic Quadrilaterals", "Factor Theorem", "Scientific Notation", "Direct and Inverse Proportion"
                         ];
                         const hacksContainer = document.querySelector('#hacks .grid');
                         const hackColors = [
@@ -139,14 +144,12 @@
                         hacks.forEach((hack, index) => {
                             const color = hackColors[index % hackColors.length];
                             const delay = (index % 5) * 100;
-                            const comingSoon = index < 3 ? '' : '<p class="text-sm ' + color.text + ' mt-2 font-semibold">Coming Soon</p>';
                             const card = `
-                                <a href="hack${index + 1}.html" class="reveal card-hover-effect bg-gray-50 p-6 rounded-xl border border-gray-200 text-center" style="transition-delay: ${delay}ms;">
-                                    <div class="${color.bg} ${color.text} rounded-full h-12 w-12 flex items-center justify-center mx-auto mb-4">
-                                        <i data-lucide="calculator"></i>
+                                <a href="hack${index + 1}.html" class="reveal card-hover-effect bg-gray-50 p-4 rounded-xl border border-gray-200 text-center">
+                                    <div class="${color.bg} ${color.text} rounded-full h-10 w-10 flex items-center justify-center mx-auto mb-3">
+                                        <i data-lucide="calculator" class="w-5 h-5"></i>
                                     </div>
-                                    <h3 class="font-semibold text-gray-800">${hack}</h3>
-                                    ${comingSoon}
+                                    <h3 class="font-semibold text-gray-800 text-sm leading-snug">${hack}</h3>
                                 </a>
                             `;
                             hacksContainer.innerHTML += card;
@@ -192,7 +195,7 @@
                     <p class="text-gray-600 mt-2">Deeper dives into concepts, study tips, and the fun side of math.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                     <!-- Generating 25 links -->
+                      <!-- Generating 25 links -->
                     <script>
                         const blogs = [
                             "How to Overcome Math Anxiety", "The Real-Life Application of Trigonometry", "Why Is Pi So Important?", "The History of Zero", "Fun Math Games for Middle Schoolers",
@@ -207,19 +210,19 @@
                             { bg: 'bg-cyan-100', text: 'text-cyan-600' },
                             { bg: 'bg-emerald-100', text: 'text-emerald-600' }
                         ];
-                         blogs.forEach((blog, index) => {
+                          blogs.forEach((blog, index) => {
                             const color = blogColors[index % blogColors.length];
                             const delay = (index % 3) * 150;
                             const card = `
                                 <a href="blog${index + 1}.html" class="reveal card-hover-effect bg-gray-50 rounded-xl overflow-hidden border border-gray-200 flex flex-col" style="transition-delay: ${delay}ms;">
-                                    <div class="h-48 ${color.bg} flex items-center justify-center ${color.text}">
-                                        <i data-lucide="lightbulb" class="w-16 h-16"></i>
+                                    <div class="h-32 ${color.bg} flex items-center justify-center ${color.text}">
+                                        <i data-lucide="lightbulb" class="w-12 h-12"></i>
                                     </div>
-                                    <div class="p-6 flex-grow">
-                                        <h3 class="font-bold text-xl text-gray-800 mb-2">${blog}</h3>
+                                    <div class="p-4 flex-grow">
+                                        <h3 class="font-bold text-lg text-gray-800 mb-2">${blog}</h3>
                                         <p class="text-gray-600 text-sm">Read our upcoming post on this fascinating topic.</p>
                                     </div>
-                                     <div class="p-6 pt-0">
+                                     <div class="p-4 pt-0">
                                         <span class="${color.text} font-semibold">Coming Soon &rarr;</span>
                                     </div>
                                 </a>
@@ -343,3 +346,4 @@
     </script>
 </body>
 </html>
+
