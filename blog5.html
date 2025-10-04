@@ -1,0 +1,380 @@
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Math Games for Middle Schoolers | Math Time Blog</title>
+    <meta name="description" content="Turn math homework into fun! Discover exciting and easy-to-play math games for middle schoolers that build skills in arithmetic, fractions, and geometry.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .prose h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            line-height: 1.2;
+            color: #1f2937;
+        }
+        .prose p {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #4b5563;
+            margin-bottom: 1.25em;
+        }
+        .prose strong {
+            color: #111827;
+        }
+        .prose .game-box {
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            overflow: hidden;
+        }
+        .game-box .illustration {
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+        }
+        .prose .game-info {
+            background-color: #f7fee7;
+            border-left: 4px solid #84cc16;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .prose .game-info strong {
+            color: #4d7c0f;
+        }
+
+        /* Animation for SVG */
+        @keyframes roll-dice {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.2); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .roll-1 { animation: roll-dice 1.5s ease-in-out infinite; }
+        .roll-2 { animation: roll-dice 1.5s ease-in-out infinite 0.5s; }
+
+        @keyframes card-flip {
+            from { transform: perspective(1000px) rotateY(0deg); }
+            to { transform: perspective(1000px) rotateY(180deg); }
+        }
+        .card-flip-animation { animation: card-flip 2s ease-in-out infinite alternate 1s; transform-style: preserve-3d; }
+        .card-face { backface-visibility: hidden; position: absolute; }
+        .card-back { transform: rotateY(180deg); }
+
+        @keyframes boom {
+            0% { r: 2; opacity: 1; }
+            100% { r: 20; opacity: 0; }
+        }
+        .boom-animation { animation: boom 1s ease-out infinite 1s; }
+
+        @keyframes draw-line {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+        .draw-animation { stroke-dasharray: 1000; animation: draw-line 3s ease-in-out infinite; }
+        
+        @keyframes pop {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+        .pop-animation { animation: pop 1s ease-in-out infinite 1s; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/90 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                <a href="index.html" class="text-3xl font-bold text-gray-900 flex items-center">
+                    <span class="gradient-text">MathTime</span><span class="text-indigo-400">.</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#hacks" class="text-gray-600 hover:text-indigo-600 transition-colors">Hacks</a>
+                    <a href="index.html#blogs" class="text-gray-600 hover:text-indigo-600 transition-colors">Blogs</a>
+                    <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+                </nav>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="hidden md:flex items-center space-x-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                    <span>Subscribe</span>
+                </a>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i data-lucide="menu" class="text-gray-800"></i>
+                </button>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html#hacks" class="block py-2 text-gray-600 hover:text-indigo-600">Hacks</a>
+                <a href="index.html#blogs" class="block py-2 text-gray-600 hover:text-indigo-600">Blogs</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="mt-2 flex justify-center items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-all">
+                    <i data-lucide="youtube"></i>
+                    <span>Subscribe on YouTube</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <article class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="prose">
+                    <div class="text-center mb-12">
+                        <p class="text-indigo-600 font-semibold">FROM THE BLOG</p>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 !mb-4">Fun Math Games for Middle Schoolers</h1>
+                        <p class="text-lg text-gray-500">Posted on October 8, 2025 by Alka Ma'am</p>
+                    </div>
+
+                    <p>Let's be honest. Does the word "math homework" make you want to hide under your bed? For many students, math can feel like a list of boring rules to memorize. But it doesn’t have to be that way!</p>
+                    
+                    <p>Math is actually a giant puzzle, and the best way to get good at puzzles is to play them. These games are designed to be super fun, easy to learn, and you can play them with just a few simple things you already have at home. Let's turn math time into game time!</p>
+                    
+                    <div class="game-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <text x="140" y="55" font-family="Inter, sans-serif" font-size="24" fill="#166534" font-weight="bold">Target: 24</text>
+                                <!-- Dice -->
+                                <g class="roll-1" style="transform-origin: 40px 50px;">
+                                    <rect x="25" y="35" width="30" height="30" rx="5" fill="#fff" stroke="#9ca3af"/>
+                                    <circle cx="33" cy="43" r="3" fill="#ef4444"/>
+                                    <circle cx="47" cy="57" r="3" fill="#ef4444"/>
+                                </g>
+                                <g class="roll-2" style="transform-origin: 90px 50px;">
+                                    <rect x="75" y="35" width="30" height="30" rx="5" fill="#fff" stroke="#9ca3af"/>
+                                    <circle cx="83" cy="43" r="3" fill="#ef4444"/>
+                                    <circle cx="83" cy="57" r="3" fill="#ef4444"/>
+                                    <circle cx="97" cy="43" r="3" fill="#ef4444"/>
+                                    <circle cx="97" cy="57" r="3" fill="#ef4444"/>
+                                </g>
+                           </svg>
+                        </div>
+                        <h2>Game 1: Target Number Dash</h2>
+                        <p>This is a fast-paced game to make your brain quicker with arithmetic. All you need are two dice and a piece of paper.</p>
+                        <ol>
+                            <li><strong>Set a Target:</strong> Pick a "target number" between 20 and 50. Let's say you pick <strong>24</strong>.</li>
+                            <li><strong>Roll the Dice:</strong> Roll two dice. Let's say you get a 2 and a 4.</li>
+                            <li><strong>Find a Path:</strong> Now, using the numbers you rolled (2 and 4), try to make the target number. You can use any operations (+, -, ×, ÷) as many times as you want.</li>
+                            <li><strong>First to Find a Way Wins:</strong> The first person to write down a correct equation wins a point! Play to 5 points.</li>
+                        </ol>
+                        <div class="game-info">
+                           <p class="!my-0"><strong>Skills Practiced:</strong> Arithmetic (all operations), Order of Operations (BODMAS/PEMDAS), Creative Thinking.</p>
+                        </div>
+                    </div>
+
+                    <div class="game-box">
+                         <div class="illustration">
+                            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <g transform="translate(40, 20)">
+                                    <rect x="0" y="0" width="40" height="60" rx="5" fill="#6366f1" />
+                                    <text x="15" y="20" font-family="Inter" font-size="12" fill="white">1</text>
+                                    <line x1="5" y1="25" x2="35" y2="25" stroke="white" stroke-width="2"/>
+                                    <text x="15" y="45" font-family="Inter" font-size="12" fill="white">2</text>
+                                </g>
+                                <g transform="translate(120, 20)" class="card-flip-animation">
+                                    <g class="card-face">
+                                        <rect x="0" y="0" width="40" height="60" rx="5" fill="#ef4444" />
+                                        <text x="15" y="20" font-family="Inter" font-size="12" fill="white">3</text>
+                                        <line x1="5" y1="25" x2="35" y2="25" stroke="white" stroke-width="2"/>
+                                        <text x="15" y="45" font-family="Inter" font-size="12" fill="white">4</text>
+                                    </g>
+                                    <g class="card-face card-back">
+                                        <rect x="0" y="0" width="40" height="60" rx="5" fill="#a78bfa" />
+                                    </g>
+                                </g>
+                                <text x="90" y="50" font-family="Inter" font-size="24" fill="#111827">></text>
+                           </svg>
+                        </div>
+                        <h2>Game 2: Fraction Wars</h2>
+                        <p>Fractions can be tricky. This game makes comparing them easy and fun. You just need a deck of playing cards (Aces = 1, remove picture cards).</p>
+                        <ol>
+                            <li><strong>Deal the Cards:</strong> Split the deck evenly between two players, facedown.</li>
+                            <li><strong>Flip and Form:</strong> At the same time, both players flip over two cards and make a fraction. The smaller number is always the numerator (top).</li>
+                            <li><strong>Declare a Winner:</strong> The player with the larger fraction wins that round and takes all four cards. (e.g., 3/4 beats 1/2).</li>
+                            <li><strong>War!:</strong> If the fractions are equal (like 1/2 and 2/4), it's War! Each player places three cards facedown, then flips two more to make a new fraction. The winner takes all.</li>
+                            <li><strong>Game Over:</strong> The player who collects all the cards wins!</li>
+                        </ol>
+                        <div class="game-info">
+                           <p class="!my-0"><strong>Skills Practiced:</strong> Comparing Fractions, Equivalent Fractions, Quick Thinking.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Grid -->
+                                <defs>
+                                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#d1d5db" stroke-width="0.5"/>
+                                    </pattern>
+                                </defs>
+                                <rect width="200" height="100" fill="url(#grid)" />
+                                <!-- Ships -->
+                                <rect x="30" y="40" width="20" height="10" rx="2" fill="#60a5fa" />
+                                <rect x="150" y="70" width="30" height="10" rx="2" fill="#f87171" />
+                                <!-- Hit -->
+                                <text x="160" y="80" font-family="monospace" font-size="24" fill="red">X</text>
+                                <circle cx="165" cy="75" r="2" fill="none" stroke="red" stroke-width="2" class="boom-animation" />
+                                <text x="10" y="90" font-family="Inter" font-size="10" fill="#4b5563">Your guess: (7, 3)</text>
+                           </svg>
+                        </div>
+                        <h2>Game 3: Coordinate Grid Battleship</h2>
+                        <p>This is a classic game that makes learning about coordinate planes exciting. All you need is graph paper and a pencil.</p>
+                        <ol>
+                            <li><strong>Draw Your Grid:</strong> Each player draws two 10x10 grids. Label the x-axis (bottom) and y-axis (left) from 1 to 10.</li>
+                            <li><strong>Place Your Fleet:</strong> On one grid, secretly draw your ships (e.g., one 4-square, one 3-square, and two 2-square ships).</li>
+                            <li><strong>Take Turns Firing:</strong> Players take turns calling out a coordinate pair, like "(7, 3)."</li>
+                            <li><strong>Call Hit or Miss:</strong> The other player checks their grid and says "Hit!" or "Miss!" Both players mark the result on their second grid.</li>
+                            <li><strong>Sink the Fleet:</strong> The first player to sink all of their opponent's ships wins.</li>
+                        </ol>
+                        <div class="game-info">
+                           <p class="!my-0"><strong>Skills Practiced:</strong> Coordinate Grids (x, y axes), Graphing, Strategic Thinking.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-box">
+                        <div class="illustration">
+                            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M50 80 C 50 20, 150 20, 150 80" class="draw-animation" stroke="#6366f1" stroke-width="2" fill="none" />
+                                <text x="100" y="55" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#4b5563">Is it a "Right Angle"?</text>
+                                <text x="100" y="70" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" class="pop-animation">?</text>
+                            </svg>
+                        </div>
+                        <h2>Game 4: Geometry Pictionary</h2>
+                        <p>Turn your geometry vocabulary into a fun, fast-paced drawing game. You'll need paper, a pen, and a list of geometry terms.</p>
+                        <ol>
+                            <li><strong>Make Word Cards:</strong> Write down geometry terms on small pieces of paper. Include words like: Isosceles Triangle, Parallel Lines, Radius, Cube, Angle, Circumference, etc.</li>
+                            <li><strong>Draw the Word:</strong> One player (the "artist") picks a card and has 60 seconds to draw that concept. The catch? No letters, numbers, or symbols allowed!</li>
+                            <li><strong>Guess the Term:</strong> The other players or teammates try to guess the word.</li>
+                            <li><strong>Score Points:</strong> If the team guesses correctly, both the artist and the guesser get a point.</li>
+                        </ol>
+                        <div class="game-info">
+                           <p class="!my-0"><strong>Skills Practiced:</strong> Geometry Vocabulary, Visualizing Shapes, Communication.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="game-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                               <text x="30" y="30" font-family="Inter, sans-serif" font-size="12">Turn Score: 15</text>
+                               <text x="110" y="30" font-family="Inter, sans-serif" font-size="12">Total Score: 42</text>
+                               <g class="roll-1" style="transform-origin: 60px 65px;">
+                                   <rect x="45" y="50" width="30" height="30" rx="5" fill="#fff" stroke="#9ca3af"/>
+                                   <circle cx="53" cy="58" r="3" fill="#16a34a"/>
+                                   <circle cx="67" cy="72" r="3" fill="#16a34a"/>
+                               </g>
+                               <text x="130" y="70" font-family="Inter, sans-serif" font-size="24" font-weight="bold" fill="#ef4444">BUST!</text>
+                           </svg>
+                        </div>
+                        <h2>Game 5: Pig Race to 100</h2>
+                        <p>This is a super simple and exciting game of probability and risk. All you need is one die and paper to keep score.</p>
+                        <ol>
+                            <li><strong>The Goal:</strong> Be the first player to reach 100 points.</li>
+                            <li><strong>On Your Turn:</strong> You can roll the die as many times as you want. Your "turn score" is the sum of all your rolls in that turn.</li>
+                            <li><strong>The Risk:</strong> If you roll a <strong>1</strong>, your turn is over and your turn score becomes <strong>zero</strong>! You lose all the points from that turn.</li>
+                            <li><strong>Bank Your Points:</strong> You can choose to stop rolling at any time. When you stop, you add your turn score to your total score. Then it's the next player's turn.</li>
+                        </ol>
+                        <div class="game-info">
+                           <p class="!my-0"><strong>Skills Practiced:</strong> Mental Addition, Probability, Risk Assessment.</p>
+                        </div>
+                    </div>
+
+                    <h3>Play Your Way to a Stronger Brain!</h3>
+                    <p>Math isn't about being "born smart." It's about practice and finding ways to make it fun. When practice feels like a game, you'll want to do it more often. Try one of these games this week, or even better, try to invent your own math game. You'll be surprised at how much fun you can have while making your brain stronger!</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- About Column -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold mb-4"><span class="gradient-text">MathTime</span>.</h3>
+                    <p class="text-gray-400">Making mathematics simple, fun, and accessible for everyone.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#hacks" class="text-gray-400 hover:text-white transition-colors">Math Hacks</a></li>
+                        <li><a href="index.html#blogs" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-white transition-colors">YouTube Channel</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Legal Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Get in Touch</h3>
+                    <p class="text-gray-400 mb-4">Have a question or a hack suggestion? Let us know!</p>
+                    <form action="#">
+                        <input type="email" placeholder="your.email@example.com" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-md font-semibold hover:from-purple-700 hover:to-indigo-700">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Math Time. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>
