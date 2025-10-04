@@ -1,1 +1,363 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Mathematicians You Should Know | Math Time Blog</title>
+    <meta name="description" content="Discover the stories of the superheroes of math, like Pythagoras, Aryabhata, Newton, and Ramanujan. Learn about their world-changing discoveries with fun animations.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .prose h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            line-height: 1.2;
+            color: #1f2937;
+        }
+        .prose p {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #4b5563;
+            margin-bottom: 1.25em;
+        }
+        .prose strong {
+            color: #111827;
+        }
+        .prose .person-box {
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            overflow: hidden;
+        }
+        .person-box .illustration {
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+        }
+        .prose .takeaway {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0ea5e9;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .prose .takeaway strong {
+            color: #0369a1;
+        }
 
+        /* Animation for SVG */
+        @keyframes rearrange-a {
+            0% { transform: translate(0, 0); }
+            50%, 100% { transform: translate(60px, 0); }
+        }
+        .rearrange-a-anim { animation: rearrange-a 4s ease-in-out infinite; }
+        
+        @keyframes rearrange-b {
+            0% { transform: translate(0, 0); }
+            50%, 100% { transform: translate(0, 60px); }
+        }
+        .rearrange-b-anim { animation: rearrange-b 4s ease-in-out infinite; }
+
+        @keyframes star-twinkle {
+            0%, 100% { fill-opacity: 0.5; transform: scale(0.8); }
+            50% { fill-opacity: 1; transform: scale(1); }
+        }
+        .star-1 { animation: star-twinkle 2s ease-in-out infinite; transform-origin: center;}
+        .star-2 { animation: star-twinkle 2s ease-in-out infinite 0.5s; transform-origin: center;}
+        .star-3 { animation: star-twinkle 2s ease-in-out infinite 1s; transform-origin: center;}
+
+        @keyframes infinity-flow {
+            from { stroke-dashoffset: 250; }
+            to { stroke-dashoffset: 0; }
+        }
+        .infinity-animation { stroke-dasharray: 10 10; animation: infinity-flow 5s linear infinite; }
+        
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(70px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
+        }
+        .orbit-animation { animation: orbit 10s linear infinite; transform-origin: center;}
+
+        @keyframes spin-conserve {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spin-animation { animation: spin-conserve 4s linear infinite; transform-origin: center; }
+        .conserve-animation { animation: conserve-glow 4s ease-in-out infinite alternate; }
+        @keyframes conserve-glow {
+             from { r: 5; fill: #fde047; }
+             to { r: 7; fill: #facc15; }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/90 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                <a href="index.html" class="text-3xl font-bold text-gray-900 flex items-center">
+                    <span class="gradient-text">MathTime</span><span class="text-indigo-400">.</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#hacks" class="text-gray-600 hover:text-indigo-600 transition-colors">Hacks</a>
+                    <a href="index.html#blogs" class="text-gray-600 hover:text-indigo-600 transition-colors">Blogs</a>
+                    <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+                </nav>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="hidden md:flex items-center space-x-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                    <span>Subscribe</span>
+                </a>
+                <button id="mobile-menu-button" class="md-hidden">
+                    <i data-lucide="menu" class="text-gray-800"></i>
+                </button>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html#hacks" class="block py-2 text-gray-600 hover:text-indigo-600">Hacks</a>
+                <a href="index.html#blogs" class="block py-2 text-gray-600 hover:text-indigo-600">Blogs</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="mt-2 flex justify-center items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-all">
+                    <i data-lucide="youtube"></i>
+                    <span>Subscribe on YouTube</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <article class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="prose">
+                    <div class="text-center mb-12">
+                        <p class="text-indigo-600 font-semibold">FROM THE BLOG</p>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 !mb-4">Famous Mathematicians You Should Know</h1>
+                        <p class="text-lg text-gray-500">Posted on October 12, 2025 by Alka Ma'am</p>
+                    </div>
+
+                    <p>When we think of heroes, we often picture people with capes and superpowers. But some of the greatest heroes in history were people who had the superpower of thinking. They were mathematicians, and their discoveries changed our world in ways we can't even imagine.</p>
+                    
+                    <p>Math isn't just a subject in a textbook; it's a long and exciting story of human curiosity. These are the stories of a few of the brilliant minds who wrote the most important chapters of that story. Let's meet the superheroes of math.</p>
+                    
+                    <div class="person-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="70" y="20" width="60" height="60" fill="none" stroke="#6ee7b7" stroke-width="2"/>
+                                <rect class="rearrange-a-anim" x="10" y="20" width="60" height="60" fill="#fca5a5" stroke="#b91c1c" stroke-width="1"/>
+                                <rect class="rearrange-b-anim" x="70" y="80" width="60" height="60" fill="#fde047" stroke="#a16207" stroke-width="1" style="transform-box: fill-box;"/>
+                           </svg>
+                        </div>
+                        <h2>Pythagoras of Samos (c. 570 – 495 BC)</h2>
+                        <h3>The Master of Triangles</h3>
+                        <p>You've probably heard his name in your geometry class. Pythagoras was an ancient Greek thinker who is famous for his theorem about right-angled triangles: a² + b² = c². But he was more than just a geometer; he was a philosopher who believed that the entire universe was built on numbers.</p>
+                        <p>He and his followers believed that numbers had personalities and that everything, from music to the planets, could be explained with simple ratios. His theorem showed that there was a hidden, perfect relationship between the sides of a right triangle. This idea—that we can find secret rules that govern the world—is the foundation of all science.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>World-Changing Idea:</strong> The universe isn't random. It follows beautiful, hidden mathematical rules that we can discover.</p>
+                        </div>
+                    </div>
+
+                    <div class="person-box">
+                         <div class="illustration">
+                            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Earth -->
+                                <circle cx="100" cy="50" r="30" fill="#60a5fa"/>
+                                <text x="90" y="55" font-size="8" fill="white">Earth</text>
+                                <!-- Stars -->
+                                <path class="star-1" d="M 30 20 L 32 25 L 38 25 L 33 28 L 35 33 L 30 30 L 25 33 L 27 28 L 22 25 L 28 25 Z" fill="#fde047"/>
+                                <path class="star-2" d="M 170 30 L 172 35 L 178 35 L 173 38 L 175 43 L 170 40 L 165 43 L 167 38 L 162 35 L 168 35 Z" fill="#fde0447"/>
+                                <path class="star-3" d="M 120 80 L 122 85 L 128 85 L 123 88 L 125 93 L 120 90 L 115 93 L 117 88 L 112 85 L 118 85 Z" fill="#fde047"/>
+                                <text x="15" y="80" font-size="10" fill="#4b5563">Calculated π ≈ 3.1416</text>
+                           </svg>
+                        </div>
+                        <h2>Aryabhata (476 – 550 AD)</h2>
+                        <h3>The Indian Pioneer of the Heavens</h3>
+                        <p>Long before Europe emerged from the Dark Ages, the great Indian astronomer and mathematician Aryabhata was making incredible discoveries. He was a true genius who wrote his masterpiece, the *Aryabhatiya*, a book that covered arithmetic, algebra, and trigonometry, all when he was just 23 years old!</p>
+                        <p>Aryabhata was one of the first to propose that the Earth rotates on its axis and revolves around the Sun—over a thousand years before Copernicus! He accurately calculated the length of a year and gave an astonishingly close approximation of Pi (π) as 3.1416. His work with the place-value system and zero was fundamental to creating the number system we use all over the world today.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>World-Changing Idea:</strong> Math is the key to understanding our place in the universe. He used it to map the heavens.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-box">
+                         <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 100 80 L 110 90 L 90 90 Z" fill="#9ca3af"/>
+                                <rect x="98" y="30" width="4" height="50" fill="#9ca3af"/>
+                                <path d="M 20 30 L 180 30" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+                                <path d="M 40 30 L 40 40" stroke="#9ca3af" stroke-width="2"/>
+                                <path d="M 30 40 A 10 5 0 0 1 50 40" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+                                <text x="38" y="55" font-family="Inter, sans-serif" font-size="10" fill="#4b5563">x</text>
+                                <path d="M 160 30 L 160 40" stroke="#9ca3af" stroke-width="2"/>
+                                <path d="M 150 40 A 10 5 0 0 1 170 40" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+                                <text x="156" y="55" font-family="Inter, sans-serif" font-size="10" fill="#4b5563">5</text>
+                                <text x="70" y="70" font-size="12">al-jabr ("restoration")</text>
+                           </svg>
+                        </div>
+                        <h2>Al-Khwarizmi (c. 780 – 850 AD)</h2>
+                        <h3>The Father of Algebra</h3>
+                        <p>If you have ever solved for 'x', you have Al-Khwarizmi to thank. This brilliant Persian mathematician worked in the legendary House of Wisdom in Baghdad. He wrote a revolutionary book whose title gave us the word "algebra."</p>
+                        <p>His great idea was to create a systematic way to solve for unknown quantities. He introduced the methods of "restoration" (al-jabr) and "balancing." He turned math from just being about counting into a powerful problem-solving language. He also introduced the Hindu-Arabic numerals (0-9) to the Western world.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>World-Changing Idea:</strong> We can create a system of rules and logic to solve for any unknown quantity. This is the heart of algebra.</p>
+                        </div>
+                    </div>
+
+                    <div class="person-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="100" cy="50" r="10" fill="#fde047"/>
+                                <circle cx="100" cy="50" r="70" fill="none" stroke="#e0e7ff" stroke-width="2"/>
+                                <g class="orbit-animation">
+                                    <circle cx="100" cy="50" r="5" fill="#60a5fa"/>
+                                </g>
+                                <text x="20" y="85" font-size="10">"I have seen further... by standing on</text>
+                                <text x="40" y="95" font-size="10">the shoulders of Giants."</text>
+                           </svg>
+                        </div>
+                        <h2>Isaac Newton (1643 – 1727)</h2>
+                        <h3>The Architect of the Modern World</h3>
+                        <p>Isaac Newton is arguably one of the most influential scientists who ever lived. He gave us the laws of motion and the law of universal gravitation. But how did he figure out that the same force that makes an apple fall from a tree also keeps the Moon in orbit around the Earth? He needed a new kind of math.</p>
+                        <p>So, he invented it. It's called <strong>calculus</strong>. Calculus is the mathematics of change. It allows us to calculate how things move and change from one moment to the next. Without calculus, we couldn't design skyscrapers, predict the weather, or send rockets into space. Newton gave us the mathematical tools to describe the world in motion.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>World-Changing Idea:</strong> We can use math to describe and predict how everything in the universe moves and changes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <g class="spin-animation">
+                                    <path d="M100 20 L 130 40 L 130 80 L 100 100 L 70 80 L 70 40 Z" fill="#e0e7ff" stroke="#93c5fd" stroke-width="2"/>
+                                    <path d="M100 20 L 100 100" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2"/>
+                                    <path d="M70 40 L 130 80" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2"/>
+                                    <path d="M70 80 L 130 40" stroke="#93c5fd" stroke-width="1" stroke-dasharray="2"/>
+                                </g>
+                                <circle class="conserve-animation" cx="100" cy="60" r="5" fill="#fde047"/>
+                           </svg>
+                        </div>
+                        <h2>Emmy Noether (1882 – 1935)</h2>
+                        <h3>The Queen of Abstract Algebra</h3>
+                        <p>For much of history, women were excluded from the world of mathematics. Emmy Noether shattered those barriers with her sheer brilliance. Albert Einstein called her "the most significant creative mathematical genius thus far produced since the higher education of women began."</p>
+                        <p>She was a master of abstract algebra, a field that studies the deep, underlying structures of mathematics itself. Her most famous discovery, Noether's Theorem, is a beautiful and profound idea that connects two big concepts from physics: <strong>symmetry</strong> and <strong>conservation laws</strong>. Her theorem proved that for every symmetry in nature (like a spinning ball looking the same as it rotates), there is a quantity that must be conserved (like its angular momentum). This is one of the most important ideas in modern physics.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>World-Changing Idea:</strong> The beautiful symmetries we see in the universe are directly connected to its most fundamental physical laws.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="person-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <text x="20" y="55" font-size="18" fill="#4b5563">1729</text>
+                                <path class="infinity-animation" d="M 90 50 C 90 30, 110 30, 130 50 S 150 70, 130 50 C 110 30, 90 30, 90 50 Z" stroke="#6366f1" stroke-width="2" fill="none"/>
+                                <text x="140" y="55" font-size="18" fill="#4b5563">...</text>
+                           </svg>
+                        </div>
+                        <h2>Srinivasa Ramanujan (1887 – 1920)</h2>
+                        <h3>The Man Who Knew Infinity</h3>
+                        <p>Not all mathematicians go to fancy schools. Srinivasa Ramanujan was a poor clerk from a small town in South India who had almost no formal training in advanced mathematics. Yet, he was one of the most brilliant minds in history. Numbers were his best friends. He would say that equations were "thoughts from God."</p>
+                        <p>He filled notebooks with thousands of incredible theorems and formulas that he discovered all on his own. He had a deep, intuitive understanding of numbers. One famous story tells of when the mathematician G.H. Hardy visited a sick Ramanujan and mentioned his taxi's number was a boring 1729. Ramanujan instantly replied, "No, it is a very interesting number; it is the smallest number expressible as the sum of two cubes in two different ways." His formulas are still being used today in fields like physics and computer science.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>World-Changing Idea:</strong> Mathematical genius can come from anywhere. Sometimes, the most beautiful patterns are found not by strict rules, but by pure intuition.</p>
+                        </div>
+                    </div>
+
+                    <h3>A Never-Ending Story</h3>
+                    <p>These are just a few of the heroes of math. Their stories teach us that mathematics is not a cold, boring subject. It's a creative, exciting, and deeply human adventure that has been going on for thousands of years. Every time you solve a problem, you are walking in the footsteps of these giants and becoming part of that amazing story.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- About Column -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold mb-4"><span class="gradient-text">MathTime</span>.</h3>
+                    <p class="text-gray-400">Making mathematics simple, fun, and accessible for everyone.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#hacks" class="text-gray-400 hover:text-white transition-colors">Math Hacks</a></li>
+                        <li><a href="index.html#blogs" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-white transition-colors">YouTube Channel</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Legal Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Get in Touch</h3>
+                    <p class="text-gray-400 mb-4">Have a question or a hack suggestion? Let us know!</p>
+                    <form action="#">
+                        <input type="email" placeholder="your.email@example.com" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-md font-semibold hover:from-purple-700 hover:to-indigo-700">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Math Time. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>
