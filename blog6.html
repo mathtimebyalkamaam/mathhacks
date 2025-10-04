@@ -1,1 +1,325 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building a Strong Foundation in Algebra | Math Time Blog</title>
+    <meta name="description" content="A simple, step-by-step guide to understanding the basics of algebra. Learn about variables, equations, and solving for 'x' with fun animations and easy examples.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .prose {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .prose h2 {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            line-height: 1.2;
+            color: #1f2937;
+        }
+        .prose p {
+            font-size: 1.125rem;
+            line-height: 1.75;
+            color: #4b5563;
+            margin-bottom: 1.25em;
+        }
+        .prose strong {
+            color: #111827;
+        }
+        .prose .concept-box {
+            background-color: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            overflow: hidden;
+        }
+        .concept-box .illustration {
+            background-color: #f3f4f6;
+            border-radius: 0.5rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 150px;
+        }
+        .prose .takeaway {
+            background-color: #ecfdf5;
+            border-left: 4px solid #34d399;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+        }
+        .prose .takeaway strong {
+            color: #059669;
+        }
 
+        /* Animation for SVG */
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-3deg); }
+            75% { transform: translateX(5px) rotate(3deg); }
+        }
+        .shake-animation { animation: shake 1s ease-in-out infinite; }
+        
+        @keyframes tip-balance {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(-10deg); }
+            40% { transform: rotate(0deg); }
+            60% { transform: rotate(10deg); }
+            80% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        .balance-animation { animation: tip-balance 4s ease-in-out infinite 1s; }
+
+        @keyframes cancel-out {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-20px); opacity: 1; }
+            100% { transform: translateY(-20px); opacity: 0; }
+        }
+        .cancel-1 { animation: cancel-out 2s ease-in-out infinite 1s; }
+        .cancel-2 { animation: cancel-out 2s ease-in-out infinite 1.5s; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/90 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                <a href="index.html" class="text-3xl font-bold text-gray-900 flex items-center">
+                    <span class="gradient-text">MathTime</span><span class="text-indigo-400">.</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#hacks" class="text-gray-600 hover:text-indigo-600 transition-colors">Hacks</a>
+                    <a href="index.html#blogs" class="text-gray-600 hover:text-indigo-600 transition-colors">Blogs</a>
+                    <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+                </nav>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="hidden md:flex items-center space-x-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                    <span>Subscribe</span>
+                </a>
+                <button id="mobile-menu-button" class="md:hidden">
+                    <i data-lucide="menu" class="text-gray-800"></i>
+                </button>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html#hacks" class="block py-2 text-gray-600 hover:text-indigo-600">Hacks</a>
+                <a href="index.html#blogs" class="block py-2 text-gray-600 hover:text-indigo-600">Blogs</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="mt-2 flex justify-center items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-all">
+                    <i data-lucide="youtube"></i>
+                    <span>Subscribe on YouTube</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <article class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="prose">
+                    <div class="text-center mb-12">
+                        <p class="text-indigo-600 font-semibold">FROM THE BLOG</p>
+                        <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 !mb-4">Building a Strong Foundation in Algebra</h1>
+                        <p class="text-lg text-gray-500">Posted on October 9, 2025 by Alka Ma'am</p>
+                    </div>
+
+                    <p>When you hear the word "Algebra," what comes to mind? For many students, it's a scary world of x's, y's, and strange-looking equations. But I want to let you in on a secret: <strong>algebra is not a new type of math. It's just a new way to think about the math you already know.</strong></p>
+                    
+                    <p>Think of it like building a house. You can't put up the walls before you have a strong foundation. In this guide, we're going to build your algebra house step-by-step, so that by the end, you'll feel right at home with any equation that comes your way.</p>
+                    
+                    <div class="concept-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                               <g class="shake-animation" style="transform-origin: center;">
+                                   <rect x="75" y="30" width="50" height="40" rx="5" fill="#facc15" stroke="#ca8a04" stroke-width="2"/>
+                                   <text x="92" y="58" font-family="Inter, sans-serif" font-size="24" fill="#713f12" font-weight="bold">?</text>
+                               </g>
+                               <text x="20" y="55" font-family="Inter, sans-serif" font-size="24" fill="#4b5563">+</text>
+                               <text x="50" y="55" font-family="Inter, sans-serif" font-size="24" fill="#4b5563">5</text>
+                               <text x="140" y="55" font-family="Inter, sans-serif" font-size="24" fill="#4b5563">= 12</text>
+                           </svg>
+                        </div>
+                        <h2>Part 1: The Foundation - The Mystery Box (Variables)</h2>
+                        <p>In arithmetic, you see problems like 7 + 5 = 12. All the numbers are known. Algebra is a little different. It introduces a mystery. It asks questions like: "What number plus 5 equals 12?"</p>
+                        <p>In algebra, instead of writing "what number" or drawing a blank box, we use a symbol. Most of the time, that symbol is the letter <strong>x</strong>. So we write: x + 5 = 12.</p>
+                        <p>This 'x' is called a <strong>variable</strong>. Don't let the name scare you. It's just a mystery box. Your job is to be a detective and figure out what number is hiding inside the box.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>The Big Idea:</strong> A variable (like x) is just a placeholder for an unknown number that you need to find.</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                         <div class="illustration">
+                            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <!-- Scale Base -->
+                                <path d="M 100 80 L 110 90 L 90 90 Z" fill="#9ca3af"/>
+                                <rect x="98" y="30" width="4" height="50" fill="#9ca3af"/>
+                                <!-- Scale Beam -->
+                                <g class="balance-animation" style="transform-origin: 100px 30px;">
+                                    <path d="M 20 30 L 180 30" stroke="#9ca3af" stroke-width="4" stroke-linecap="round"/>
+                                    <!-- Left Pan -->
+                                    <path d="M 40 30 L 40 40" stroke="#9ca3af" stroke-width="2"/>
+                                    <path d="M 30 40 A 10 5 0 0 1 50 40" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+                                    <text x="33" y="55" font-family="Inter, sans-serif" font-size="10" fill="#4b5563">x + 5</text>
+                                    <!-- Right Pan -->
+                                    <path d="M 160 30 L 160 40" stroke="#9ca3af" stroke-width="2"/>
+                                    <path d="M 150 40 A 10 5 0 0 1 170 40" fill="#d1d5db" stroke="#9ca3af" stroke-width="2"/>
+                                    <text x="156" y="55" font-family="Inter, sans-serif" font-size="10" fill="#4b5563">12</text>
+                                </g>
+                           </svg>
+                        </div>
+                        <h2>Part 2: The Walls - The Golden Rule of Balance (Equations)</h2>
+                        <p>That full statement, x + 5 = 12, is called an <strong>equation</strong>. The most important part of an equation is the equals sign (=). The equals sign is a promise. It promises that the value on the left side is exactly the same as the value on the right side.</p>
+                        <p>Think of it like a perfectly balanced scale. If you add a weight to one side, you must add the *exact same weight* to the other side to keep it balanced. If you take a weight off one side, you must do the same on the other.</p>
+                        <p>This is the Golden Rule of Algebra: <strong>Whatever you do to one side of the equation, you MUST do to the other side.</strong> This rule is the key to solving every single algebra problem.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>The Big Idea:</strong> An equation is a balanced scale. You must always keep it balanced.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-box">
+                        <div class="illustration">
+                           <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                                <g class="cancel-1">
+                                    <rect x="50" y="40" width="30" height="20" rx="3" fill="#a7f3d0"/>
+                                    <text x="55" y="55" font-family="Inter, sans-serif" font-size="12" fill="#047857">+5</text>
+                                </g>
+                                <g class="cancel-2">
+                                    <rect x="120" y="40" width="30" height="20" rx="3" fill="#fecaca"/>
+                                    <text x="125" y="55" font-family="Inter, sans-serif" font-size="12" fill="#991b1b">-5</text>
+                                </g>
+                                <text x="90" y="55" font-family="Inter, sans-serif" font-size="24" fill="#4b5563">→</text>
+                                <text x="60" y="80" font-family="Inter, sans-serif" font-size="14" fill="#4338ca">Opposites!</text>
+                           </svg>
+                        </div>
+                        <h2>Part 3: The Tools - Your Algebra Toolkit (Inverse Operations)</h2>
+                        <p>So, how do we find out what's in our mystery box? Our goal is to get the 'x' all by itself on one side of the equation. To do that, we need to get rid of the other numbers around it. We do this using "opposite" operations, which have a fancy name: <strong>inverse operations</strong>.</p>
+                        <ul>
+                            <li>The opposite of <strong>adding</strong> is <strong>subtracting</strong>.</li>
+                            <li>The opposite of <strong>subtracting</strong> is <strong>adding</strong>.</li>
+                            <li>The opposite of <strong>multiplying</strong> is <strong>dividing</strong>.</li>
+                            <li>The opposite of <strong>dividing</strong> is <strong>multiplying</strong>.</li>
+                        </ul>
+                        <p>These are the tools in your algebra toolkit. If the equation has "+ 5", you use "- 5" to cancel it out. If it has "× 3", you use "÷ 3" to cancel it out.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>The Big Idea:</strong> To get 'x' alone, use the opposite operation to cancel out the numbers on the same side as 'x'.</p>
+                        </div>
+                    </div>
+
+                    <div class="concept-box">
+                        <h2 class="!mt-0">Part 4: The Roof - Putting It All Together</h2>
+                        <p>Let's use our foundation, walls, and tools to solve our mystery. Our equation is x + 5 = 12.</p>
+                        <ol>
+                            <li><strong>Our Goal:</strong> Get 'x' alone.</li>
+                            <li><strong>What's with 'x'?:</strong> A "+ 5".</li>
+                            <li><strong>What's the opposite?:</strong> The opposite of adding 5 is subtracting 5.</li>
+                            <li><strong>Apply the Golden Rule:</strong> We must subtract 5 from *both sides* to keep the scale balanced.
+                                <br>
+                                x + 5 - 5 = 12 - 5
+                            </li>
+                            <li><strong>Solve it:</strong> The "+ 5" and "- 5" on the left cancel each other out, leaving just 'x'. On the right, 12 - 5 = 7.
+                                <br>
+                                So, x = 7. The number in the mystery box was 7!
+                            </li>
+                        </ol>
+                        <p>You have just solved your first algebra equation! This same logic works for everything, even harder problems like 2x - 3 = 11. You just do it in steps: first, add 3 to both sides, then divide both sides by 2.</p>
+                        <div class="takeaway">
+                           <p class="!my-0"><strong>The Big Idea:</strong> By using inverse operations and keeping the equation balanced, you can solve any algebraic puzzle.</p>
+                        </div>
+                    </div>
+
+                    <h3>Your House is Built!</h3>
+                    <p>That's it. That's the core of algebra. It's not about memorizing a hundred rules; it's about understanding these three simple ideas: the mystery box, the balanced scale, and the opposite tools. Once you master this foundation, you can build any kind of mathematical house you want.</p>
+                    <p>So next time you see an 'x', don't panic. Just see it as a puzzle waiting for a clever detective—you!—to solve it.</p>
+                </div>
+            </div>
+        </article>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- About Column -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold mb-4"><span class="gradient-text">MathTime</span>.</h3>
+                    <p class="text-gray-400">Making mathematics simple, fun, and accessible for everyone.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#hacks" class="text-gray-400 hover:text-white transition-colors">Math Hacks</a></li>
+                        <li><a href="index.html#blogs" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-white transition-colors">YouTube Channel</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Legal Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Form -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Get in Touch</h3>
+                    <p class="text-gray-400 mb-4">Have a question or a hack suggestion? Let us know!</p>
+                    <form action="#">
+                        <input type="email" placeholder="your.email@example.com" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2">
+                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-md font-semibold hover:from-purple-700 hover:to-indigo-700">Submit</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Math Time. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>
