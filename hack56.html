@@ -1,1 +1,172 @@
 
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Hack Coming Soon | Math Time</title>
+    <meta name="description" content="A new math hack is being developed! Check back weekly for new shortcuts and problem-solving tricks.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Animation for SVG */
+        @keyframes write {
+            from { stroke-dashoffset: 300; fill-opacity: 0; }
+            to { stroke-dashoffset: 0; fill-opacity: 1; }
+        }
+        .write-animation {
+            stroke: white;
+            stroke-width: 0.5;
+            stroke-dasharray: 300;
+            animation: write 4s ease-in-out infinite;
+        }
+        .fade-in {
+            animation: fade-in-anim 1s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fade-in-anim {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/90 backdrop-blur-lg sticky top-0 left-0 right-0 z-50 transition-all duration-300 shadow-sm">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center py-4 border-b border-gray-200">
+                <a href="index.html" class="text-3xl font-bold text-gray-900 flex items-center">
+                    <span class="gradient-text">MathTime</span><span class="text-indigo-400">.</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="index.html#hacks" class="text-gray-600 hover:text-indigo-600 transition-colors">Hacks</a>
+                    <a href="index.html#blogs" class="text-gray-600 hover:text-indigo-600 transition-colors">Blogs</a>
+                    <a href="about.html" class="text-gray-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-600 hover:text-indigo-600 transition-colors">Contact</a>
+                </nav>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="hidden md:flex items-center space-x-2 bg-red-600 text-white px-5 py-2.5 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-md">
+                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                    <span>Subscribe</span>
+                </a>
+                <button id="mobile-menu-button" class="md-hidden">
+                    <i data-lucide="menu" class="text-gray-800"></i>
+                </button>
+            </div>
+             <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="index.html#hacks" class="block py-2 text-gray-600 hover:text-indigo-600">Hacks</a>
+                <a href="index.html#blogs" class="block py-2 text-gray-600 hover:text-indigo-600">Blogs</a>
+                <a href="about.html" class="block py-2 text-gray-600 hover:text-indigo-600">About</a>
+                <a href="contact.html" class="block py-2 text-gray-600 hover:text-indigo-600">Contact</a>
+                <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="mt-2 flex justify-center items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-all">
+                    <i data-lucide="youtube"></i>
+                    <span>Subscribe on YouTube</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="flex items-center justify-center min-h-[calc(100vh-250px)]">
+            <div class="text-center p-6 fade-in">
+                <div class="mb-8">
+                    <svg class="mx-auto" width="150" height="100" viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="200" height="100" fill="#27272a" rx="5" />
+                        <text x="30" y="60" font-family="'Comic Sans MS', 'Chalkduster', 'cursive'" font-size="24" class="write-animation">
+                            a²+b²=c²
+                        </text>
+                    </svg>
+                </div>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Your Next 'Aha!' Moment is on its Way.</h1>
+                <p class="text-lg text-gray-600 max-w-xl mx-auto mb-2">
+                    Our team is busy crafting a new, powerful math shortcut for you.
+                </p>
+                <p class="text-lg text-gray-600 max-w-xl mx-auto mb-8">
+                    We update our library weekly with clever tricks to make math easy.
+                </p>
+                <p class="text-xl font-semibold gradient-text mb-12">
+                    Thank you for your curiosity! We can't wait to share it.
+                </p>
+                <a href="index.html#hacks" class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-indigo-500/50">
+                    ← Back to All Hacks
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- About Column -->
+                <div class="lg:col-span-1">
+                    <h3 class="text-2xl font-bold mb-4"><span class="gradient-text">MathTime</span>.</h3>
+                    <p class="text-gray-400">Making mathematics simple, fun, and accessible for everyone.</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-red-500 transition-colors"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#hacks" class="text-gray-400 hover:text-white transition-colors">Math Hacks</a></li>
+                        <li><a href="index.html#blogs" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="https://www.youtube.com/@its.mathtime" target="_blank" class="text-gray-400 hover:text-white transition-colors">YouTube Channel</a></li>
+                        <li><a href="faq.html" class="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
+                    </ul>
+                </div>
+                <!-- Legal Links -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Legal</h3>
+                    <ul class="space-y-2">
+                        <li><a href="privacy.html" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                        <li><a href="terms.html" class="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+                        <li><a href="about.html" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Get in Touch</h3>
+                    <p class="text-gray-400">
+                        Contact us at: <br>
+                        <a href="mailto:info.onesharma@gmail.com" class="text-indigo-400 hover:text-indigo-300 transition-colors">info.onesharma@gmail.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">
+                <p>&copy; <script>document.write(new Date().getFullYear())</script> Math Time. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+<script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+    
+    // Mobile Menu Toggle
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+</body>
+</html>
