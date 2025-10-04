@@ -224,8 +224,26 @@
             <div class="container mx-auto px-6">
                  <div class="text-center mb-16 fade-in-up">
                     <h2 class="text-4xl md:text-5xl font-bold text-gray-900">From Our Math Blog</h2>
-                    <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Deeper dives into concepts, study tips, and the fun side of mathematics.</p>
+                    <p class="text-gray-600 mt-4 text-lg max-w-2xl mx-auto">Search or filter our deep dives into concepts, study tips, and the fun side of math.</p>
                 </div>
+
+                <!-- NEW Blog Search and Filter UI -->
+                <div class="mb-10 fade-in-up" style="transition-delay: 200ms;">
+                    <div class="max-w-4xl mx-auto">
+                         <div class="relative search-box transition-shadow duration-300 rounded-lg shadow-sm">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <i data-lucide="search" class="text-gray-400"></i>
+                            </div>
+                            <input type="text" id="blog-search" placeholder="Search for an article..." class="w-full p-4 pl-12 text-lg border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        </div>
+                        <div class="relative mt-6">
+                            <div id="blog-categories" class="no-scrollbar flex items-center gap-3 overflow-x-auto pb-2 -mx-6 px-6 md:flex-wrap md:justify-center md:mx-0 md:px-0">
+                                <!-- Blog category pills will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blogs-grid">
                   <!-- Blog cards will be generated here -->
                 </div>
@@ -278,14 +296,13 @@
                         <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
                     </ul>
                 </div>
-                <!-- Contact Form -->
+                <!-- Contact Info -->
                 <div>
                     <h3 class="font-semibold text-white mb-4 tracking-wider uppercase">Get in Touch</h3>
-                    <p class="text-gray-400 mb-4">Have a question or a hack suggestion? Let us know!</p>
-                    <form action="#">
-                        <input type="email" placeholder="your.email@example.com" class="w-full bg-gray-800 border border-gray-700 rounded-md py-2 px-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 mb-2">
-                        <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-2 rounded-md font-semibold hover:from-purple-700 hover:to-indigo-700">Submit</button>
-                    </form>
+                    <p class="text-gray-400">
+                        Contact us at: <br>
+                        <a href="mailto:info.onesharma@gmail.com" class="text-indigo-400 hover:text-indigo-300 transition-colors">info.onesharma@gmail.com</a>
+                    </p>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-10 pt-8 text-center text-gray-500 text-sm">
@@ -311,6 +328,14 @@
         STATISTICS: { name: "Statistics", icon: "bar-chart-3" },
         SET_THEORY: { name: "Set Theory", icon: "git-fork" },
         VEDIC_MATHS: { name: "Vedic Maths", icon: "scroll-text" },
+    };
+
+    const BLOG_CATEGORIES = {
+        CONCEPTS: { name: "Concepts", icon: "book-open" },
+        HISTORY: { name: "History", icon: "landmark" },
+        STUDY_TIPS: { name: "Study Tips", icon: "pen-tool" },
+        FUN_MATH: { name: "Fun & Games", icon: "gamepad-2" },
+        REAL_WORLD: { name: "Real World", icon: "globe" },
     };
 
     const allHacks = [
@@ -397,32 +422,26 @@
     ];
 
     const allBlogs = [
-        { title: "How to Overcome Math Anxiety", link: "blog1.html" },
-        { title: "The Real-Life Application of Trigonometry", link: "blog2.html" },
-        { title: "Why Is Pi So Important?", link: "blog3.html" },
-        { title: "The History of Zero", link: "blog4.html" },
-        { title: "Fun Math Games for Middle Schoolers", link: "blog5.html" },
-        { title: "Building a Strong Foundation in Algebra", link: "blog6.html" },
-        { title: "How to Study for a Math Exam", link: "blog7.html" },
-        { title: "The Link Between Music and Math", link: "blog8.html" },
-        { title: "Famous Mathematicians You Should Know", link: "blog9.html" },
-        { title: "Understanding Geometric Proofs", link: "blog10.html" },
-        { title: "The Beauty of the Fibonacci Sequence", link: "blog11.html" },
-        { title: "Math in Nature: A Perfect Match", link: "blog12.html" },
-        { title: "Careers That Use Math Every Day", link: "blog13.html" },
-        { title: "Tips for Memorizing Formulas", link: "blog14.html" },
-        { title: "Is Mental Math a Superpower?", link: "blog15.html" },
-        { title: "The Paradoxes That Baffle Mathematicians", link: "blog16.html" },
-        { title: "How Video Games Use Math", link: "blog17.html" },
-        { title: "Cryptography: The Math of Secrets", link: "blog18.html" },
-        { title: "Making Sense of Word Problems", link: "blog19.html" },
-        { title: "The Art of Logical Thinking", link: "blog20.html" },
-        { title: "Parent's Guide to Helping with Math", link: "blog21.html" },
-        { title: "How to Use an Abacus", link: "blog22.html" },
-        { title: "Exploring Different Number Systems", link: "blog23.html" },
-        { title: "Math Puzzles to Sharpen Your Mind", link: "blog24.html" },
-        { title: "The Future of Mathematics", link: "blog25.html" }
-        // ... Add up to 50+ blogs here
+        { title: "How to Overcome Math Anxiety", link: "blog1.html", category: BLOG_CATEGORIES.STUDY_TIPS, published: true, desc: "Learn simple, practical techniques to understand and conquer math fear." },
+        { title: "The Real-Life Application of Trigonometry", link: "blog2.html", category: BLOG_CATEGORIES.REAL_WORLD, published: true, desc: "Discover how trigonometry is used in video games, GPS, and architecture." },
+        { title: "Why Is Pi So Important?", link: "blog3.html", category: BLOG_CATEGORIES.CONCEPTS, published: true, desc: "Explore Pi's role in nature, technology, and the universe with fun animations." },
+        { title: "The History of Zero", link: "blog4.html", category: BLOG_CATEGORIES.HISTORY, published: true, desc: "The amazing story of how 'nothing' became a mathematical revolution from ancient India." },
+        { title: "Fun Math Games for Middle Schoolers", link: "blog5.html", category: BLOG_CATEGORIES.FUN_MATH, published: true, desc: "Turn math homework into fun with games that build skills in arithmetic and geometry." },
+        { title: "Building a Strong Foundation in Algebra", link: "blog6.html", category: BLOG_CATEGORIES.CONCEPTS, published: true, desc: "A step-by-step guide to understanding variables, equations, and solving for 'x'." },
+        { title: "How to Study for a Math Exam", link: "blog7.html", category: BLOG_CATEGORIES.STUDY_TIPS, published: true, desc: "A 3-phase game plan to study effectively and score better in any math exam." },
+        { title: "The Link Between Music and Math", link: "blog8.html", category: BLOG_CATEGORIES.REAL_WORLD, published: true, desc: "See how rhythm, harmony, and song structure are built on mathematical principles." },
+        { title: "Famous Mathematicians You Should Know", link: "blog9.html", category: BLOG_CATEGORIES.HISTORY, published: true, desc: "Meet the superheroes of math, from Pythagoras to Ramanujan, and their discoveries." },
+        { title: "Understanding Geometric Proofs", link: "blog10.html", category: BLOG_CATEGORIES.CONCEPTS, published: true, desc: "Learn to think like a detective and solve geometric proofs step-by-step." },
+        { title: "The Beauty of the Fibonacci Sequence", link: "blog11.html", category: BLOG_CATEGORIES.CONCEPTS, published: true, desc: "Discover nature's secret code and the beautiful spirals it creates in flowers and shells." },
+        { title: "Math in Nature: A Perfect Match", link: "blog12.html", category: BLOG_CATEGORIES.REAL_WORLD, published: false, desc: "Explore the mathematical patterns that exist all around us in the natural world." },
+        { title: "Careers That Use Math Every Day", link: "blog13.html", category: BLOG_CATEGORIES.REAL_WORLD, published: false, desc: "From animation to engineering, see how math is essential in exciting professions." },
+        { title: "Tips for Memorizing Formulas", link: "blog14.html", category: BLOG_CATEGORIES.STUDY_TIPS, published: false, desc: "Stop memorizing and start understanding with these powerful memory techniques." },
+        { title: "Is Mental Math a Superpower?", link: "blog15.html", category: BLOG_CATEGORIES.FUN_MATH, published: false, desc: "Learn tricks and techniques to perform calculations in your head faster than a calculator." },
+        { title: "The Paradoxes That Baffle Mathematicians", link: "blog16.html", category: BLOG_CATEGORIES.CONCEPTS, published: false, desc: "A journey into the most mind-bending puzzles and paradoxes in the history of math." },
+        { title: "How Video Games Use Math", link: "blog17.html", category: BLOG_CATEGORIES.FUN_MATH, published: false, desc: "From game physics to 3D graphics, discover the math that powers your favorite games." },
+        { title: "Cryptography: The Math of Secrets", link: "blog18.html", category: BLOG_CATEGORIES.REAL_WORLD, published: false, desc: "An introduction to the fascinating world of codes and ciphers, all powered by math." },
+        { title: "Making Sense of Word Problems", link: "blog19.html", category: BLOG_CATEGORIES.STUDY_TIPS, published: false, desc: "A step-by-step guide to translating confusing word problems into simple equations." },
+        { title: "The Art of Logical Thinking", link: "blog20.html", category: BLOG_CATEGORIES.STUDY_TIPS, published: false, desc: "Learn how the principles of mathematical logic can make you a sharper thinker." },
     ];
 
     // --- Dynamic Content Generation & Filtering ---
@@ -502,7 +521,7 @@
             }
         };
 
-        // 3. Event Listeners
+        // 3. Event Listeners for Hacks
         hackSearch.addEventListener('input', (e) => {
             currentHackSearch = e.target.value;
             visibleHacks = HACKS_PER_PAGE;
@@ -519,27 +538,67 @@
 
         // --- Blog Library Logic ---
         const blogsGrid = document.getElementById('blogs-grid');
+        const blogSearch = document.getElementById('blog-search');
+        const blogCategoriesContainer = document.getElementById('blog-categories');
         const loadMoreBlogsBtn = document.getElementById('load-more-blogs');
+        
         let visibleBlogs = 6;
         const BLOGS_PER_PAGE = 6;
+        let currentBlogFilter = 'All';
+        let currentBlogSearch = '';
 
+        // 1. Create Blog Categories
+        const blogCategories = [ { name: 'All', icon: 'infinity' }, ...Object.values(BLOG_CATEGORIES)];
+        
+        blogCategoriesContainer.innerHTML = '';
+        blogCategories.forEach(category => {
+            const pill = document.createElement('button');
+            pill.className = 'category-pill flex-shrink-0 flex items-center gap-2 px-4 py-2 rounded-full font-semibold bg-gray-200 text-gray-700 hover:bg-gray-300';
+            pill.innerHTML = `<i data-lucide="${category.icon}" class="w-4 h-4"></i><span>${category.name}</span>`;
+            if (category.name === 'All') pill.classList.add('active');
+            
+            pill.onclick = () => {
+                blogCategoriesContainer.querySelector('.active').classList.remove('active');
+                pill.classList.add('active');
+                currentBlogFilter = category.name;
+                visibleBlogs = BLOGS_PER_PAGE;
+                renderBlogs();
+            };
+            blogCategoriesContainer.appendChild(pill);
+        });
+        
+        // 2. Render Blogs Function
         const renderBlogs = () => {
             blogsGrid.innerHTML = '';
-            const blogsToRender = allBlogs.slice(0, visibleBlogs);
+            const filteredBlogs = allBlogs
+                .filter(blog => currentBlogFilter === 'All' || blog.category.name === currentBlogFilter)
+                .filter(blog => blog.title.toLowerCase().includes(currentBlogSearch.toLowerCase()));
+
+            const blogsToRender = filteredBlogs.slice(0, visibleBlogs);
+
+            if(blogsToRender.length === 0){
+                 blogsGrid.innerHTML = `<p class="text-gray-600 text-center col-span-full">No articles found. Try a different search or filter.</p>`;
+            }
 
             blogsToRender.forEach((blog, index) => {
-                 const card = document.createElement('a');
-                 card.href = blog.link;
-                 card.className = "card-hover bg-white rounded-xl overflow-hidden border border-gray-200 flex flex-col group fade-in-up";
-                 card.style.transitionDelay = `${(index % BLOGS_PER_PAGE) * 100}ms`;
-                 card.innerHTML = `
-                    <div class="h-40 bg-rose-100 flex items-center justify-center text-rose-600 overflow-hidden">
-                        <i data-lucide="lightbulb" class="w-16 h-16 transition-transform duration-500 group-hover:scale-110"></i>
-                    </div>
+                const card = document.createElement('a');
+                card.href = blog.link;
+                card.className = "card-hover bg-white rounded-xl border border-gray-200 flex flex-col group fade-in-up";
+                card.style.transitionDelay = `${(index % BLOGS_PER_PAGE) * 100}ms`;
+                
+                const statusText = blog.published ? 'Read Article' : 'Coming Soon';
+                const statusColor = blog.published ? 'text-indigo-600' : 'text-rose-500';
+
+                card.innerHTML = `
                     <div class="p-6 flex-grow flex flex-col">
-                        <h3 class="font-bold text-xl text-gray-800 mb-2">${blog.title}</h3>
-                        <p class="text-gray-600 text-sm flex-grow">Read our upcoming post on this fascinating topic.</p>
-                        <span class="text-indigo-600 font-semibold mt-4 inline-block">Coming Soon <span class="transition-transform duration-300 inline-block group-hover:translate-x-1">&rarr;</span></span>
+                        <div class="flex items-start justify-between">
+                            <h3 class="font-bold text-lg text-gray-800 mb-2 pr-4">${blog.title}</h3>
+                            <div class="bg-indigo-100 text-indigo-600 rounded-full h-10 w-10 flex-shrink-0 flex items-center justify-center">
+                                <i data-lucide="${blog.category.icon}" class="w-5 h-5"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 text-sm flex-grow">${blog.desc}</p>
+                        <span class="${statusColor} font-semibold mt-4 inline-block">${statusText} <span class="transition-transform duration-300 inline-block group-hover:translate-x-1">&rarr;</span></span>
                     </div>
                 `;
                 blogsGrid.appendChild(card);
@@ -550,12 +609,19 @@
                 document.querySelectorAll('#blogs-grid .fade-in-up').forEach(el => el.classList.add('visible'));
             }, 10);
 
-            if (visibleBlogs >= allBlogs.length) {
+            if (visibleBlogs >= filteredBlogs.length) {
                 loadMoreBlogsBtn.style.display = 'none';
             } else {
                 loadMoreBlogsBtn.style.display = 'inline-block';
             }
         };
+        
+        // 3. Event Listeners for Blogs
+        blogSearch.addEventListener('input', (e) => {
+            currentBlogSearch = e.target.value;
+            visibleBlogs = BLOGS_PER_PAGE;
+            renderBlogs();
+        });
 
         loadMoreBlogsBtn.addEventListener('click', () => {
             visibleBlogs += BLOGS_PER_PAGE;
@@ -603,3 +669,4 @@
 </script>
 </body>
 </html>
+
